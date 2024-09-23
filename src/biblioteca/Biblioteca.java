@@ -2,6 +2,8 @@ package biblioteca;
 
 import conexao.Conexao;
 
+// Software de Biblioteca
+
 /**
  *
  * @author Gabriel
