@@ -22,8 +22,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-CREATE database bd_biblioteca;
-USE bd_biblioteca;
+CREATE database `bd_biblioteca`;
+USE `bd_biblioteca`;
 
 --
 -- Estrutura para tabela `administra_livro`
