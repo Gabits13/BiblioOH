@@ -8,7 +8,7 @@ import conexao.Conexao;
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel Santos
  */
 public class Login extends javax.swing.JFrame {
         Conexao con_cliente;
@@ -46,6 +46,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
+        setResizable(false);
 
         JPanel1.setBackground(new java.awt.Color(48, 145, 144));
         JPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +136,7 @@ public class Login extends javax.swing.JFrame {
         Direita.setBackground(new java.awt.Color(48, 145, 144));
         Direita.setMinimumSize(new java.awt.Dimension(400, 500));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
 
         jLabel8.setText("© 2024  Blibioteca Haia®. Todos os direitos reservados");
 
@@ -150,7 +151,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(DireitaLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel8)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DireitaLayout.setVerticalGroup(
             DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,11 +160,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JPanel1.add(Direita);
-        Direita.setBounds(400, 0, 400, 500);
+        Direita.setBounds(400, 0, 478, 483);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
