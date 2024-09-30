@@ -18,6 +18,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
+//@author Gabriel Santos
+
 public class ImageAvatar extends JComponent {
 
     public Icon getImage() {
