@@ -249,19 +249,17 @@ INSERT INTO `cargo` (`Descricao`, `Nome_Cargo`, `Salario`) VALUES
 
 -- Inserir registros na tabela `conta_administrador`
 INSERT INTO `conta_administrador` (`Id_Funcionario`, `Senha`) VALUES
-(1, 'senhaAdmin1'),
-(2, 'senhaAdmin2'),
-(3, 'senhaAdmin3'),
-(4, 'senhaAdmin4'),
-(5, 'senhaAdmin5');
+(1, '7272'),
+(2, '12345'),
+(3, 'batman');
+
 
 -- Inserir registros na tabela `funcionario`
 INSERT INTO `funcionario` (`Nome`, `RG`, `CPF`, `Data_Nasc`, `Data_Admissao`, `Endereco`, `Telefone`, `Email`, `Cod_Periodo`, `Cod_Cargo`) VALUES
-('Ana Silva', '123456789', '111.111.111-11', '1990-05-10', '2023-01-15', 'Rua A, 123', '(11) 99999-1111', 'ana@biblioteca.com', 1, 1),
-('Carlos Souza', '987654321', '222.222.222-22', '1985-02-20', '2022-03-10', 'Rua B, 456', '(11) 98888-2222', 'carlos@biblioteca.com', 2, 2),
-('Maria Oliveira', '111222333', '333.333.333-33', '1992-07-30', '2021-05-01', 'Rua C, 789', '(11) 97777-3333', 'maria@biblioteca.com', 1, 3),
-('João Ferreira', '444555666', '444.444.444-44', '1988-10-15', '2020-09-15', 'Rua D, 101', '(11) 96666-4444', 'joao@biblioteca.com', 3, 4),
-('Laura Lima', '777888999', '555.555.555-55', '1995-03-25', '2019-12-20', 'Rua E, 202', '(11) 95555-5555', 'laura@biblioteca.com', 1, 5);
+('Gabriel Santos', '123456789', '111.111.111-11', '1990-05-10', '2023-01-15', 'Rua A, 123', '(11) 99999-1111', 'gabriel.santos@gmail.com', 1, 1),
+('Guilherme Santos', '987654321', '222.222.222-22', '1985-02-20', '2022-03-10', 'Rua B, 456', '(11) 98888-2222', 'guilherme.santos@gmail.com', 2, 2),
+('Gabriel Oliveira', '111222333', '333.333.333-33', '1992-07-30', '2021-05-01', 'Rua C, 789', '(11) 97777-3333', 'gabriel.oliveira@gmail.com', 1, 3);
+
 
 -- Inserir registros na tabela `livro`
 INSERT INTO `livro` (`Titulo`, `Nome_Autor`, `Data_Lancamento`, `Genero`, `Qtde_Pagina`, `Exemplares`, `Editora`, `ISBN`, `Cod_Setor`) VALUES
@@ -285,7 +283,7 @@ INSERT INTO `setor` (`Andar`, `Genero`) VALUES
 ('1º Andar', 'História'),
 ('2º Andar', 'Tecnologia'),
 ('3º Andar', 'Mistério'),
-('4º Andar', 'Ciência');
+('4º Andar', 'Romance');
 
 -- Inserir registros na tabela `usuario`
 INSERT INTO `usuario` (`Nome`, `Endereco`, `RG`, `CPF`, `Telefone`, `Email`, `Senha`) VALUES
