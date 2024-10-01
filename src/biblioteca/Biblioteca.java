@@ -4,7 +4,7 @@ import conexao.Conexao;
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel Santos
  */
 public class Biblioteca {
 

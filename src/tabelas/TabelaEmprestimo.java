@@ -4,20 +4,29 @@
  */
 package tabelas;
 
+import JanelasModais.AlterarEmprestimo;
+import JanelasModais.NovoRegistroEmprestimo;
 import conexao.Conexao;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author guilh
+ * @author Guilherme
  */
 public class TabelaEmprestimo extends javax.swing.JPanel {
 
     /**
-     * Creates new form TabelaEmprestimo
+     * Creates new form TabelaLivro
      */
+    String idUsuario = "";
+    String codLivro = "";
+    String emissao = "";
+    String devolucao = "";
     Conexao con_cliente;
     public TabelaEmprestimo() {
         initComponents();
@@ -30,7 +39,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         emprestimo1.setRowHeight(40);
         emprestimo1.getTableHeader().setReorderingAllowed(false);
         
-        con_cliente.executaSQL("select * from empresta_livro order by Id_Usuario"); //colocar o order by depois
+        con_cliente.executaSQL("select * from empresta_livro order by Id_Usuario");
         preencherTabela();
     }
     
@@ -38,12 +47,32 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         FuncoesBtn event = new FuncoesBtn() {
             @Override
             public void Alterar(int row, int column) {
-                System.out.println("Linha: " + row + "Editada");
+                //System.out.println("Linha: " + row + " Editada");
+                for (int i = 0; i < 4; i++) {
+                    switch (i) {
+                        case 0:
+                            idUsuario = emprestimo1.getValueAt(row, i).toString();
+                            break;
+                        case 1:
+                            codLivro = emprestimo1.getValueAt(row, i).toString();
+                            break;
+                        case 2:
+                            emissao = emprestimo1.getValueAt(row, i).toString();
+                            break;
+                        case 3:
+                            devolucao = emprestimo1.getValueAt(row, i).toString();
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+                }
+                AlterarEmprestimo alt = new AlterarEmprestimo(null, true, idUsuario, codLivro, emissao, devolucao);
+                alt.setVisible(true);
             }
 
             @Override
             public void Deletar(int row, int column) {
-                System.out.println("Linha: " + row + "Deletada");
+                System.out.println("Linha: " + row + " Deletada");
             }
         };
         emprestimo1.getColumnModel().getColumn(0);
@@ -60,7 +89,10 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
             con_cliente.resultset.beforeFirst();
             while(con_cliente.resultset.next()) {
                 modelo.addRow(new Object[]{
-                    con_cliente.resultset.getString("Id_Usuario"),con_cliente.resultset.getString("Cod_Livro"),con_cliente.resultset.getString("Data_Emissao"),con_cliente.resultset.getString("Data_Devolucao")
+                    con_cliente.resultset.getString("Id_Usuario"),
+                    con_cliente.resultset.getString("Cod_Livro"),
+                    con_cliente.resultset.getString("Data_Emissao"),
+                    con_cliente.resultset.getString("Data_Devolucao")
                 });
             }
         } catch (Exception erro) {
@@ -79,9 +111,9 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        emprestimo1 = new tabelas.Emprestimo();
+        emprestimo1 = new tabelas.Tabela();
         btnNovoRegistro = new javax.swing.JButton();
-        pesquisa = new javax.swing.JTextField();
+        barraPesquisa = new javax.swing.JTextField();
         btnPesquisa = new javax.swing.JButton();
         btnProximo = new javax.swing.JButton();
         btnAnterior = new javax.swing.JButton();
@@ -89,16 +121,19 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         btnUltimo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(932, 529));
+        setPreferredSize(new java.awt.Dimension(923, 529));
 
-        jLabel1.setText("Tabela Empréstimo");
+        jLabel1.setText("Tabela Emprestimo");
 
         emprestimo1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID_Usuario", "Cod_Livro", "Emissão", "Devolução", "Ação"
+                "ID_Usuario", "Cod_Livro", "Data_Emissao", "Data_Devolucao", "Ação"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -109,11 +144,27 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        emprestimo1.setPreferredSize(new java.awt.Dimension(645, 80));
         emprestimo1.setSelectionBackground(new java.awt.Color(0, 102, 102));
         jScrollPane1.setViewportView(emprestimo1);
+        if (emprestimo1.getColumnModel().getColumnCount() > 0) {
+            emprestimo1.getColumnModel().getColumn(0).setPreferredWidth(50);
+            emprestimo1.getColumnModel().getColumn(1).setPreferredWidth(140);
+            emprestimo1.getColumnModel().getColumn(2).setPreferredWidth(100);
+            emprestimo1.getColumnModel().getColumn(4).setPreferredWidth(110);
+        }
 
         btnNovoRegistro.setText("Novo Registro");
+        btnNovoRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoRegistroActionPerformed(evt);
+            }
+        });
+
+        barraPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                barraPesquisaActionPerformed(evt);
+            }
+        });
 
         btnPesquisa.setText("P");
 
@@ -134,15 +185,15 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovoRegistro)
                         .addGap(157, 157, 157)
-                        .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                         .addComponent(btnProximo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnterior)
@@ -160,29 +211,39 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovoRegistro)
-                    .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisa)
                     .addComponent(btnProximo)
                     .addComponent(btnAnterior)
                     .addComponent(btnPrimeiro)
                     .addComponent(btnUltimo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(236, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoRegistroActionPerformed
+        // TODO add your handling code here:
+        NovoRegistroEmprestimo nr = new NovoRegistroEmprestimo(null, true);
+        nr.setVisible(true);
+    }//GEN-LAST:event_btnNovoRegistroActionPerformed
+
+    private void barraPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barraPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_barraPesquisaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField barraPesquisa;
     private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnNovoRegistro;
     private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnPrimeiro;
     private javax.swing.JButton btnProximo;
     private javax.swing.JButton btnUltimo;
-    private tabelas.Emprestimo emprestimo1;
+    private tabelas.Tabela emprestimo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField pesquisa;
     // End of variables declaration//GEN-END:variables
 }

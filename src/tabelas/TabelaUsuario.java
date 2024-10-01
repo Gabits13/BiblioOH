@@ -4,6 +4,8 @@
  */
 package tabelas;
 
+import JanelasModais.AlterarUsuario;
+import JanelasModais.NovoRegistroUsuario;
 import conexao.Conexao;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -14,13 +16,21 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Admin
+ * @author Guilherme
  */
 public class TabelaUsuario extends javax.swing.JPanel {
 
     /**
      * Creates new form TabelaUsuario
      */
+    String id = "";
+    String nome = "";
+    String endereco = "";
+    String rg = "";
+    String cpf = "";
+    String telefone = "";
+    String email = "";
+    String senha = "";
     Conexao con_cliente;
     public TabelaUsuario() {
         initComponents();
@@ -41,15 +51,44 @@ public class TabelaUsuario extends javax.swing.JPanel {
         FuncoesBtn event = new FuncoesBtn() {
             @Override
             public void Alterar(int row, int column) {
-                System.out.println("Linha: " + row + "Editada");
-                for (int i = 1; i < 8; i++) {
-                    System.out.println(usuario1.getValueAt(row, i).toString());
+                //System.out.println("Linha: " + row + " Editada");
+                for (int i = 0; i < 8; i++) {
+                    switch (i) {
+                        case 0:
+                            id = usuario1.getValueAt(row, i).toString();
+                            break;
+                        case 1:
+                            nome = usuario1.getValueAt(row, i).toString();
+                            break;
+                        case 2:
+                            endereco = usuario1.getValueAt(row, i).toString();
+                            break;
+                        case 3:
+                            rg = usuario1.getValueAt(row, i).toString();
+                            break;
+                        case 4:
+                            cpf = usuario1.getValueAt(row, i).toString();
+                            break;
+                        case 5:
+                            telefone = usuario1.getValueAt(row, i).toString();
+                            break;
+                        case 6:
+                            email = usuario1.getValueAt(row, i).toString();
+                            break;
+                        case 7:
+                            senha = usuario1.getValueAt(row, i).toString();
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
                 }
+                AlterarUsuario alt = new AlterarUsuario(null, true, id, nome, endereco, rg, cpf, telefone, email, senha);
+                alt.setVisible(true);
             }
 
             @Override
             public void Deletar(int row, int column) {
-                System.out.println("Linha: " + row + "Deletada");
+                System.out.println("Linha: " + row + " Deletada");
             }
         };
         usuario1.getColumnModel().getColumn(0);
@@ -70,7 +109,14 @@ public class TabelaUsuario extends javax.swing.JPanel {
             con_cliente.resultset.beforeFirst();
             while(con_cliente.resultset.next()) {
                 modelo.addRow(new Object[]{
-                    con_cliente.resultset.getString("Id_Usuario"),con_cliente.resultset.getString("Nome"),con_cliente.resultset.getString("Endereco"),con_cliente.resultset.getString("RG"),con_cliente.resultset.getString("CPF"),con_cliente.resultset.getString("Telefone"),con_cliente.resultset.getString("Email"),con_cliente.resultset.getString("Senha")
+                    con_cliente.resultset.getString("Id_Usuario"),
+                    con_cliente.resultset.getString("Nome"),
+                    con_cliente.resultset.getString("Endereco"),
+                    con_cliente.resultset.getString("RG"),
+                    con_cliente.resultset.getString("CPF"),
+                    con_cliente.resultset.getString("Telefone"),
+                    con_cliente.resultset.getString("Email"),
+                    con_cliente.resultset.getString("senha")
                 });
             }
         } catch (Exception erro) {
@@ -89,7 +135,7 @@ public class TabelaUsuario extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        usuario1 = new tabelas.Usuario();
+        usuario1 = new tabelas.Tabela();
         btnNovoRegistro = new javax.swing.JButton();
         barraPesquisa = new javax.swing.JTextField();
         btnPesquisa = new javax.swing.JButton();
@@ -111,7 +157,7 @@ public class TabelaUsuario extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Endereço", "RG", "CPF", "Telefone", "Email", "Senha", "Ação"
+                "Id_Usuario", "Nome", "Endereco", "RG", "CPF", "Telefone", "Email", "Senha", "Ação"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -125,8 +171,12 @@ public class TabelaUsuario extends javax.swing.JPanel {
         usuario1.setSelectionBackground(new java.awt.Color(0, 102, 102));
         jScrollPane1.setViewportView(usuario1);
         if (usuario1.getColumnModel().getColumnCount() > 0) {
-            usuario1.getColumnModel().getColumn(0).setPreferredWidth(20);
-            usuario1.getColumnModel().getColumn(6).setPreferredWidth(120);
+            usuario1.getColumnModel().getColumn(0).setPreferredWidth(50);
+            usuario1.getColumnModel().getColumn(1).setPreferredWidth(140);
+            usuario1.getColumnModel().getColumn(2).setPreferredWidth(70);
+            usuario1.getColumnModel().getColumn(3).setPreferredWidth(100);
+            usuario1.getColumnModel().getColumn(5).setPreferredWidth(90);
+            usuario1.getColumnModel().getColumn(8).setPreferredWidth(110);
         }
 
         btnNovoRegistro.setText("Novo Registro");
@@ -169,7 +219,7 @@ public class TabelaUsuario extends javax.swing.JPanel {
                         .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                         .addComponent(btnProximo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnterior)
@@ -195,12 +245,14 @@ public class TabelaUsuario extends javax.swing.JPanel {
                     .addComponent(btnUltimo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoRegistroActionPerformed
         // TODO add your handling code here:
+        NovoRegistroUsuario nr = new NovoRegistroUsuario(null, true);
+        nr.setVisible(true);
     }//GEN-LAST:event_btnNovoRegistroActionPerformed
 
     private void barraPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barraPesquisaActionPerformed
@@ -218,6 +270,6 @@ public class TabelaUsuario extends javax.swing.JPanel {
     private javax.swing.JButton btnUltimo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private tabelas.Usuario usuario1;
+    private tabelas.Tabela usuario1;
     // End of variables declaration//GEN-END:variables
 }
