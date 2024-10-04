@@ -13,11 +13,62 @@ public class NovoRegistroLivro extends javax.swing.JDialog {
     /**
      * Creates new form AlterarUsuario
      */
+    private String codLivro = "";
+    private String titulo = "";
+    private String autor = "";
+    private String dataLacamento = "";
+    private String genero = "";
+    private String qtdePag = "";
+    private String exemplares = "";
+    private String editora = "";
+    private String isbn = "";
+    private String codSetor = "";
     public NovoRegistroLivro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
     }
+
+    public String getCodLivro() {
+        return codLivro;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getDataLacamento() {
+        return dataLacamento;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public String getQtdePag() {
+        return qtdePag;
+    }
+
+    public String getExemplares() {
+        return exemplares;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public String getCodSetor() {
+        return codSetor;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,6 +151,11 @@ public class NovoRegistroLivro extends javax.swing.JDialog {
 
         btnGravar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGravar.setText("Gravar");
+        btnGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGravarActionPerformed(evt);
+            }
+        });
 
         tfCodSetor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,6 +311,21 @@ public class NovoRegistroLivro extends javax.swing.JDialog {
     private void tfCodSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodSetorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCodSetorActionPerformed
+
+    private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+        // TODO add your handling code here:
+        this.codLivro = tfCodLivro.getText();
+        this.titulo = tfTitulo.getText();
+        this.autor = tfAutor.getText();
+        this.dataLacamento = tfDataLancamento.getText();
+        this.genero = tfGenero.getText();
+        this.qtdePag = tfQtdePag.getText();
+        this.exemplares = tfExemplares.getText();
+        this.editora = tfEditora.getText();
+        this.isbn = tfIsbn.getText();
+        this.codSetor = tfCodSetor.getText();
+        this.dispose();
+    }//GEN-LAST:event_btnGravarActionPerformed
 
     /**
      * @param args the command line arguments

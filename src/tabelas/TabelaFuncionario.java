@@ -50,58 +50,109 @@ public class TabelaFuncionario extends javax.swing.JPanel {
         preencherTabela();
     }
     
-    private void preencherTabela() {
-        FuncoesBtn event = new FuncoesBtn() {
-            @Override
-            public void Alterar(int row, int column) {
-                for (int i = 0; i < 11; i++) {
-                    switch (i) {
-                        case 0:
-                            id = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 1:
-                            nome = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 2:
-                            rg = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 3:
-                            cpf = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 4:
-                            dataNascimento = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 5:
-                            dataAdmissao = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 6:
-                            endereco = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 7:
-                            telefone = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 8:
-                            email = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 9:
-                            codPeriodo = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        case 10:
-                            codCargo = funcionario1.getValueAt(row, i).toString();
-                            break;
-                        default:
-                            throw new AssertionError();
+    FuncoesBtn event = new FuncoesBtn() {
+        @Override
+        public void Alterar(int row, int column) {
+            String sql;
+            String msg = "";
+            for (int i = 0; i < 11; i++) {
+                switch (i) {
+                    case 0:
+                        id = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 1:
+                        nome = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 2:
+                        rg = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 3:
+                        cpf = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 4:
+                        dataNascimento = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 5:
+                        dataAdmissao = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 6:
+                        endereco = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 7:
+                        telefone = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 8:
+                        email = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 9:
+                        codPeriodo = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    case 10:
+                        codCargo = funcionario1.getValueAt(row, i).toString();
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+            }
+            AlterarFuncionario alt = new AlterarFuncionario(null, true, id, nome, rg, cpf, dataNascimento, dataAdmissao, endereco, telefone, email, codPeriodo, codCargo);
+            alt.setVisible(true);
+            id = alt.getId();
+            nome = alt.getNome();
+            rg = alt.getRg();
+            cpf = alt.getCpf();
+            dataNascimento = alt.getDataNascimento();
+            dataAdmissao = alt.getDataAdmissao();
+            endereco = alt.getEndereco();
+            telefone = alt.getTelefone();
+            email = alt.getEmail();
+            codPeriodo = alt.getCodPeriodo();
+            codCargo = alt.getCodCargo();
+            //
+            try {
+                if (id.equals("") == false) {
+                    sql = "update funcionario set Nome='" + nome + "',RG='" + rg + "',CPF='" + cpf + "',Data_Nasc='" + dataNascimento + "',Data_Admissao='" + dataAdmissao + "',Endereco='" + endereco + "',Telefone='" + telefone + "',Email='" + email + "',Cod_Periodo='" + codPeriodo + "',Cod_Cargo='" + codCargo + "' where Id_Funcionario = " + id;
+                    msg = "Alteração de registro";
+                    con_cliente.statement.executeUpdate(sql);
+                    JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+
+                    con_cliente.executaSQL("select * from funcionario order by Id_Funcionario");
+                    preencherTabela();
+                }
+            } catch (Exception errosql) {
+                JOptionPane.showMessageDialog(null, "\n Erro na gravação: \n" + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+        @Override
+        public void Deletar(int row, int column) {
+            id = funcionario1.getValueAt(row, 0).toString();
+            String sql="";
+            if (funcionario1.isEditing()) {
+                funcionario1.getCellEditor().stopCellEditing();
+            }
+            try {
+                int opcao;
+                Object [] botoes = {"Sim","Não"};
+                opcao = JOptionPane.showOptionDialog(null, "Deseja excluir o registro: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);
+                if(opcao==JOptionPane.YES_OPTION){
+                    sql = "delete from funcionario where Id_Funcionario = " + id;
+                    int excluir = con_cliente.statement.executeUpdate(sql);
+                    if (excluir==1){
+                        JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                        con_cliente.executaSQL("select * from funcionario order by Id_Funcionario");
+                        preencherTabela();
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
-                AlterarFuncionario alt = new AlterarFuncionario(null, true, id, nome, rg, cpf, dataNascimento, dataAdmissao, endereco, telefone, email, codPeriodo, codCargo);
-                alt.setVisible(true);
+            } catch (Exception excecao) {
+                JOptionPane.showMessageDialog(null, "Erro na exclusão: " + excecao, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
             }
-
-            @Override
-            public void Deletar(int row, int column) {
-                System.out.println("Linha: " + row + " Deletada");
-            }
-        };
+        }
+    };
+    
+    private void preencherTabela() {
         funcionario1.getColumnModel().getColumn(0);
         funcionario1.getColumnModel().getColumn(1);
         funcionario1.getColumnModel().getColumn(2);
@@ -160,11 +211,12 @@ public class TabelaFuncionario extends javax.swing.JPanel {
         btnAnterior = new javax.swing.JButton();
         btnPrimeiro = new javax.swing.JButton();
         btnUltimo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(923, 529));
 
-        jLabel1.setText("Tabela Funcionário");
+        jLabel1.setText("Nome:");
 
         funcionario1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,7 +265,12 @@ public class TabelaFuncionario extends javax.swing.JPanel {
             }
         });
 
-        btnPesquisa.setText("P");
+        btnPesquisa.setText("Pesquisar");
+        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaActionPerformed(evt);
+            }
+        });
 
         btnProximo.setText("Próximo");
 
@@ -222,6 +279,8 @@ public class TabelaFuncionario extends javax.swing.JPanel {
         btnPrimeiro.setText("Primeiro");
 
         btnUltimo.setText("Ultimo");
+
+        jLabel2.setText("Tabela Funcionário");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -232,15 +291,14 @@ public class TabelaFuncionario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovoRegistro)
-                        .addGap(157, 157, 157)
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addComponent(btnProximo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnterior)
@@ -249,13 +307,16 @@ public class TabelaFuncionario extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUltimo)))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(767, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(56, 56, 56)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovoRegistro)
                     .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,10 +324,16 @@ public class TabelaFuncionario extends javax.swing.JPanel {
                     .addComponent(btnProximo)
                     .addComponent(btnAnterior)
                     .addComponent(btnPrimeiro)
-                    .addComponent(btnUltimo))
+                    .addComponent(btnUltimo)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel2)
+                    .addContainerGap(497, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -274,11 +341,53 @@ public class TabelaFuncionario extends javax.swing.JPanel {
         // TODO add your handling code here:
         NovoRegistroFuncionario nr = new NovoRegistroFuncionario(null, true);
         nr.setVisible(true);
+        id = nr.getId();
+        nome = nr.getNome();
+        rg = nr.getRg();
+        cpf = nr.getCpf();
+        dataNascimento = nr.getDataNascimento();
+        dataAdmissao = nr.getDataAdmissao();
+        endereco = nr.getEndereco();
+        telefone = nr.getTelefone();
+        email = nr.getEmail();
+        codPeriodo = nr.getCodPeriodo();
+        codCargo = nr.getCodCargo();
+        
+        try {
+            if (nome != "" && rg !="" && cpf !="" && dataNascimento !="" && dataAdmissao !="" && endereco !="" && telefone !="" && email !="" && codPeriodo !="" && codCargo !="") {
+                String insert_sql = "insert into funcionario (Nome,RG,CPF,Data_Nasc,Data_Admissao,Endereco,Telefone,Email,Cod_Periodo, Cod_Cargo) values ('" + nome + "', '" + rg + "', '" + cpf + "', '" + dataNascimento + "', '" + dataAdmissao + "', '" + endereco + "', '" + telefone + "', '" + email + "', '" + codPeriodo + "', '" + codCargo + "')";
+                con_cliente.statement.executeUpdate(insert_sql);
+                JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+
+                con_cliente.executaSQL("select * from funcionario order by Id_Funcionario");
+                preencherTabela();
+            };
+            
+        } catch (Exception errosql) {
+            JOptionPane.showMessageDialog(null, "\n Erro na gravação: \n" + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnNovoRegistroActionPerformed
 
     private void barraPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barraPesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_barraPesquisaActionPerformed
+
+    private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
+        // TODO add your handling code here:
+        try {
+                String pesquisa = "select * from funcionario where Nome like '" + barraPesquisa.getText() + "%'";
+                con_cliente.executaSQL(pesquisa);
+
+                if (con_cliente.resultset.first()) {
+                    preencherTabela();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "\n Não existe dados com este paramêtro!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+        } catch (Exception errosql) {
+            JOptionPane.showMessageDialog(null, "\n Os dados digitados não foram localizados!! :\n" + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesquisaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -291,6 +400,7 @@ public class TabelaFuncionario extends javax.swing.JPanel {
     private javax.swing.JButton btnUltimo;
     private tabelas.Tabela funcionario1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

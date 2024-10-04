@@ -13,6 +13,10 @@ public class AlterarEmprestimo extends javax.swing.JDialog {
     /**
      * Creates new form AlterarUsuario
      */
+    private String idUsuario = "";
+    private String codLivro = "";
+    private String emissao = "";
+    private String devolucao = "";
     public AlterarEmprestimo(java.awt.Frame parent, boolean modal, String idUsuario, String codLivro, String emissao, String devolucao) {
         super(parent, modal);
         initComponents();
@@ -22,6 +26,23 @@ public class AlterarEmprestimo extends javax.swing.JDialog {
         tfEmissao.setText(emissao);
         tfDevolucao.setText(devolucao);
     }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public String getCodLivro() {
+        return codLivro;
+    }
+
+    public String getEmissao() {
+        return emissao;
+    }
+
+    public String getDevolucao() {
+        return devolucao;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,6 +104,11 @@ public class AlterarEmprestimo extends javax.swing.JDialog {
 
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,6 +201,15 @@ public class AlterarEmprestimo extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+        this.idUsuario = tfIdUsuario.getText();
+        this.codLivro = tfCodLivro.getText();
+        this.emissao = tfEmissao.getText();
+        this.devolucao = tfDevolucao.getText();
+        this.dispose();
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments

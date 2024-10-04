@@ -13,10 +13,66 @@ public class NovoRegistroFuncionario extends javax.swing.JDialog {
     /**
      * Creates new form AlterarUsuario
      */
+    private String id = "";
+    private String nome = "";
+    private String rg = "";
+    private String cpf = "";
+    private String dataNascimento = "";
+    private String dataAdmissao = "";
+    private String endereco = "";
+    private String telefone = "";
+    private String email = "";
+    private String codPeriodo = "";
+    private String codCargo = "";
     public NovoRegistroFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public String getDataAdmissao() {
+        return dataAdmissao;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCodPeriodo() {
+        return codPeriodo;
+    }
+
+    public String getCodCargo() {
+        return codCargo;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,6 +157,11 @@ public class NovoRegistroFuncionario extends javax.swing.JDialog {
 
         btnGravar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGravar.setText("Gravar");
+        btnGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGravarActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Cod Periodo");
@@ -254,6 +315,22 @@ public class NovoRegistroFuncionario extends javax.swing.JDialog {
     private void tfTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfTelefoneActionPerformed
+
+    private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+        // TODO add your handling code here:
+        this.id = tfId.getText();
+        this.nome = tfNome.getText();
+        this.rg = tfRg.getText();
+        this.cpf = tfCpf.getText();
+        this.dataNascimento = tfDataNascimento.getText();
+        this.dataAdmissao = tfDataAdmissao.getText();
+        this.endereco = tfEndereco.getText();
+        this.telefone = tfTelefone.getText();
+        this.email = tfEmail.getText();
+        this.codPeriodo = tfCodPerido.getText();
+        this.codCargo = tfCodCargo.getText();
+        this.dispose();
+    }//GEN-LAST:event_btnGravarActionPerformed
 
     /**
      * @param args the command line arguments

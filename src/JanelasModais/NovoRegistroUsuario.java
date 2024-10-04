@@ -13,10 +13,51 @@ public class NovoRegistroUsuario extends javax.swing.JDialog {
     /**
      * Creates new form AlterarUsuario
      */
+    private String id = "";
+    private String nome = "";
+    private String endereco = "";
+    private String rg = "";
+    private String cpf = "";
+    private String telefone = "";
+    private String email = "";
+    private String senha = "";
     public NovoRegistroUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,6 +130,11 @@ public class NovoRegistroUsuario extends javax.swing.JDialog {
 
         btnGravar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGravar.setText("Gravar");
+        btnGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGravarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,6 +243,19 @@ public class NovoRegistroUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+        // TODO add your handling code here:
+        this.id = tfId.getText();
+        this.nome = tfNome.getText();
+        this.endereco = tfEndereco.getText();
+        this.rg = tfRg.getText();
+        this.cpf = tfCpf.getText();
+        this.telefone = tfTelefone.getText();
+        this.email = tfEmail.getText();
+        this.senha = tfSenha.getText();
+        this.dispose();
+    }//GEN-LAST:event_btnGravarActionPerformed
 
     /**
      * @param args the command line arguments

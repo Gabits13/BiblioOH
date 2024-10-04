@@ -26,6 +26,9 @@ public class PageInicialUser extends javax.swing.JFrame {
 
          
         initComponents();
+        ImageIcon icone = new ImageIcon("src/img/logo3.jfif");
+        setIconImage(icone.getImage());
+        
         drawer=Drawer.newDrawer(this)
                 .header(new Header())
                 .background(new Color(255,255,255))

@@ -12,6 +12,7 @@ import java.awt.font.TextAttribute;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.sql.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /**
  *
@@ -27,7 +28,8 @@ public class LoginAdmin extends javax.swing.JFrame {
             con_cliente = new Conexao(); 
             con_cliente.conecta(); 
     
-        
+        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
+        setIconImage(icone.getImage());
         
     }
 

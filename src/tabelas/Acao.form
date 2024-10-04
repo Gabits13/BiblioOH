@@ -46,7 +46,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnAlterar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="A"/>
+        <Property name="text" type="java.lang.String" value="ALT"/>
       </Properties>
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAlterarMousePressed"/>
@@ -55,7 +55,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDeletar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="D"/>
+        <Property name="text" type="java.lang.String" value="DEL"/>
       </Properties>
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDeletarMousePressed"/>

@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.util.Map;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,6 +22,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
+        setIconImage(icone.getImage());
     }
 
     /**
@@ -141,7 +144,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
 
-        jLabel8.setText("© 2024  Blibioteca Haia®. Todos os direitos reservados");
+        jLabel8.setText("© 2024  BlibioOH®. Todos os direitos reservados");
 
         javax.swing.GroupLayout DireitaLayout = new javax.swing.GroupLayout(Direita);
         Direita.setLayout(DireitaLayout);
@@ -152,7 +155,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(72, 72, 72))
             .addGroup(DireitaLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(75, 75, 75)
                 .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

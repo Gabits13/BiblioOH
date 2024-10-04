@@ -43,38 +43,82 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         preencherTabela();
     }
     
-    private void preencherTabela() {
-        FuncoesBtn event = new FuncoesBtn() {
-            @Override
-            public void Alterar(int row, int column) {
-                //System.out.println("Linha: " + row + " Editada");
-                for (int i = 0; i < 4; i++) {
-                    switch (i) {
-                        case 0:
-                            idUsuario = emprestimo1.getValueAt(row, i).toString();
-                            break;
-                        case 1:
-                            codLivro = emprestimo1.getValueAt(row, i).toString();
-                            break;
-                        case 2:
-                            emissao = emprestimo1.getValueAt(row, i).toString();
-                            break;
-                        case 3:
-                            devolucao = emprestimo1.getValueAt(row, i).toString();
-                            break;
-                        default:
-                            throw new AssertionError();
+    FuncoesBtn event = new FuncoesBtn() {
+        @Override
+        public void Alterar(int row, int column) {
+            String sql;
+            String msg = "";
+            for (int i = 0; i < 4; i++) {
+                switch (i) {
+                    case 0:
+                        idUsuario = emprestimo1.getValueAt(row, i).toString();
+                        break;
+                    case 1:
+                        codLivro = emprestimo1.getValueAt(row, i).toString();
+                        break;
+                    case 2:
+                        emissao = emprestimo1.getValueAt(row, i).toString();
+                        break;
+                    case 3:
+                        devolucao = emprestimo1.getValueAt(row, i).toString();
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+            }
+            AlterarEmprestimo alt = new AlterarEmprestimo(null, true, idUsuario, codLivro, emissao, devolucao);
+            alt.setVisible(true);
+            idUsuario = alt.getIdUsuario();
+            codLivro = alt.getCodLivro();
+            emissao = alt.getEmissao();
+            devolucao = alt.getDevolucao();
+            //
+            try {
+                if (idUsuario.equals("") == false) {
+                    sql = "update empresta_livro set Data_Emissao='" + emissao + "',Data_Devolucao='" + devolucao + "' where Id_Usuario = " + idUsuario;
+                    msg = "Alteração de registro";
+                    con_cliente.statement.executeUpdate(sql);
+                    JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+
+                    con_cliente.executaSQL("select * from empresta_livro order by Id_Usuario");
+                    preencherTabela();
+                }
+            } catch (Exception errosql) {
+                JOptionPane.showMessageDialog(null, "\n Erro na gravação: \n" + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+        @Override
+        public void Deletar(int row, int column) {
+            idUsuario = emprestimo1.getValueAt(row, 0).toString();
+            String sql="";
+            if (emprestimo1.isEditing()) {
+                emprestimo1.getCellEditor().stopCellEditing();
+            }
+            try {
+                int opcao;
+                Object [] botoes = {"Sim","Não"};
+                opcao = JOptionPane.showOptionDialog(null, "Deseja excluir o registro: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);
+                if(opcao==JOptionPane.YES_OPTION){
+                    sql = "delete from empresta_livro where Id_Usuario = " + idUsuario;
+                    int excluir = con_cliente.statement.executeUpdate(sql);
+                    if (excluir==1){
+                        JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                        con_cliente.executaSQL("select * from empresta_livro order by Id_Usuario");
+                        preencherTabela();
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
-                AlterarEmprestimo alt = new AlterarEmprestimo(null, true, idUsuario, codLivro, emissao, devolucao);
-                alt.setVisible(true);
+            } catch (Exception excecao) {
+                JOptionPane.showMessageDialog(null, "Erro na exclusão: " + excecao, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
             }
-
-            @Override
-            public void Deletar(int row, int column) {
-                System.out.println("Linha: " + row + " Deletada");
-            }
-        };
+        }
+    };
+    
+    private void preencherTabela() {
+        
         emprestimo1.getColumnModel().getColumn(0);
         emprestimo1.getColumnModel().getColumn(1);
         emprestimo1.getColumnModel().getColumn(2);
@@ -119,6 +163,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         btnAnterior = new javax.swing.JButton();
         btnPrimeiro = new javax.swing.JButton();
         btnUltimo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(923, 529));
@@ -166,7 +211,12 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
             }
         });
 
-        btnPesquisa.setText("P");
+        btnPesquisa.setText("Pesquisar");
+        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaActionPerformed(evt);
+            }
+        });
 
         btnProximo.setText("Próximo");
 
@@ -175,6 +225,8 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         btnPrimeiro.setText("Primeiro");
 
         btnUltimo.setText("Ultimo");
+
+        jLabel2.setText("Data de devolução");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -189,11 +241,13 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovoRegistro)
-                        .addGap(157, 157, 157)
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                         .addComponent(btnProximo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnterior)
@@ -216,10 +270,11 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                     .addComponent(btnProximo)
                     .addComponent(btnAnterior)
                     .addComponent(btnPrimeiro)
-                    .addComponent(btnUltimo))
+                    .addComponent(btnUltimo)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -227,11 +282,46 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         // TODO add your handling code here:
         NovoRegistroEmprestimo nr = new NovoRegistroEmprestimo(null, true);
         nr.setVisible(true);
+        idUsuario = nr.getIdUsuario();
+        codLivro = nr.getCodLivro();
+        emissao = nr.getEmissao();
+        devolucao = nr.getDevolucao();
+        
+        try {
+            if (idUsuario != "" && codLivro != "" && emissao !="" && devolucao !="") {
+                String insert_sql = "insert into empresta_livro (Id_Usuario,Cod_Livro,Data_Emissao,Data_Devolucao) values ('"+ idUsuario +"', '" + codLivro + "', '" + emissao + "', '" + devolucao + "')";
+                con_cliente.statement.executeUpdate(insert_sql);
+                JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+
+                con_cliente.executaSQL("select * from empresta_livro order by Id_Usuario");
+                preencherTabela();
+            }
+            
+        } catch (Exception errosql) {
+            JOptionPane.showMessageDialog(null, "\n Erro na gravação: \n" + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnNovoRegistroActionPerformed
 
     private void barraPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barraPesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_barraPesquisaActionPerformed
+
+    private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
+        // TODO add your handling code here:
+        try {
+                String pesquisa = "select * from empresta_livro where Data_Devolucao like '" + barraPesquisa.getText() + "%'";
+                con_cliente.executaSQL(pesquisa);
+
+                if (con_cliente.resultset.first()) {
+                    preencherTabela();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "\n Não existe dados com este paramêtro!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+        } catch (Exception errosql) {
+            JOptionPane.showMessageDialog(null, "\n Os dados digitados não foram localizados!! :\n" + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesquisaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -244,6 +334,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
     private javax.swing.JButton btnUltimo;
     private tabelas.Tabela emprestimo1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

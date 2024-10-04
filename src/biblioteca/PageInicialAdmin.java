@@ -36,7 +36,8 @@ public class PageInicialAdmin extends javax.swing.JFrame {
        
         
         initComponents();
-       
+        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
+        setIconImage(icone.getImage());
 
         drawer=Drawer.newDrawer(this)
                 .header(new Header())
@@ -55,11 +56,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
                 .addChild(periodo)
                 .addChild(setores)
                 .addChild(sobrenos)
-                
-              
-                
-                
-                .addFooter(sair)
+                .addChild(sair)
                 
                 .build();  
         
@@ -86,7 +83,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
                     popup.show(e.getComponent(),e.getX(),e.getY()
                 ); 
             }});  
-        home02.setText("Página Inicial");
+        home02.setText("Tela Inicial");
         livro02.setText("Tabela Livro");
         funcionario02.setText("Tabela Funcionario");
         usuario02.setText("Tabela Usuario");
@@ -205,7 +202,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         home.setBackground(new java.awt.Color(48, 145, 144));
         home.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/homeheader.png"))); // NOI18N
-        home.setText("Página Inicial");
+        home.setText("Tela Inicial");
         home.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,6 +402,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaFuncionario.setVisible(false);
         tabelaLivro.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
     }//GEN-LAST:event_usuariosActionPerformed
 
     private void livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livroActionPerformed
@@ -414,6 +412,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaFuncionario.setVisible(false);
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
     }//GEN-LAST:event_livroActionPerformed
 
     private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
@@ -447,6 +446,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaEmprestimo.setVisible(false);
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaLivro.setVisible(false);
     }//GEN-LAST:event_homeActionPerformed
 
     private void emprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimosActionPerformed
@@ -501,6 +501,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaFuncionario.setVisible(false);
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
     }//GEN-LAST:event_livro02ActionPerformed
 
     private void emprestimo02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimo02ActionPerformed
@@ -520,6 +521,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaFuncionario.setVisible(false);
         tabelaLivro.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
     }//GEN-LAST:event_usuario02ActionPerformed
 
     private void administradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administradorActionPerformed
@@ -543,6 +545,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaEmprestimo.setVisible(false);
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaLivro.setVisible(false);
     }//GEN-LAST:event_home02ActionPerformed
 
     

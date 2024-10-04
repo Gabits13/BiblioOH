@@ -81,7 +81,7 @@ public class Acao extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(400, 40));
 
-        btnAlterar.setText("A");
+        btnAlterar.setText("ALT");
         btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnAlterarMousePressed(evt);
@@ -91,7 +91,7 @@ public class Acao extends javax.swing.JPanel {
             }
         });
 
-        btnDeletar.setText("D");
+        btnDeletar.setText("DEL");
         btnDeletar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnDeletarMousePressed(evt);

@@ -13,6 +13,16 @@ public class AlterarLivro extends javax.swing.JDialog {
     /**
      * Creates new form AlterarUsuario
      */
+    private String codLivro = "";
+    private String titulo = "";
+    private String autor = "";
+    private String dataLacamento = "";
+    private String genero = "";
+    private String qtdePag = "";
+    private String exemplares = "";
+    private String editora = "";
+    private String isbn = "";
+    private String codSetor = "";
     public AlterarLivro(java.awt.Frame parent, boolean modal, String codLivro, String titulo, String autor, String dataLancamento, String genero, String qtdePag, String exemplares, String editora, String isbn, String codSetor) {
         super(parent, modal);
         initComponents();
@@ -28,6 +38,47 @@ public class AlterarLivro extends javax.swing.JDialog {
         tfIsbn.setText(isbn);
         tfCodSetor.setText(codSetor);
     }
+
+    public String getCodLivro() {
+        return codLivro;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getDataLacamento() {
+        return dataLacamento;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public String getQtdePag() {
+        return qtdePag;
+    }
+
+    public String getExemplares() {
+        return exemplares;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public String getCodSetor() {
+        return codSetor;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,6 +176,11 @@ public class AlterarLivro extends javax.swing.JDialog {
 
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         tfCodSetor.setText("123");
 
@@ -160,9 +216,8 @@ public class AlterarLivro extends javax.swing.JDialog {
                                         .addComponent(tfCodSetor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addGap(141, 141, 141))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tfAutor, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                                .addComponent(tfAutor, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfTitulo, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel7)
@@ -275,6 +330,21 @@ public class AlterarLivro extends javax.swing.JDialog {
     private void tfIsbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIsbnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfIsbnActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+        this.codLivro = tfCodLivro.getText();
+        this.titulo = tfTitulo.getText();
+        this.autor = tfAutor.getText();
+        this.dataLacamento = tfDataLancamento.getText();
+        this.genero = tfGenero.getText();
+        this.qtdePag = tfQtdePag.getText();
+        this.exemplares = tfExemplares.getText();
+        this.editora = tfEditora.getText();
+        this.isbn = tfIsbn.getText();
+        this.codSetor = tfCodSetor.getText();
+        this.dispose();
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments

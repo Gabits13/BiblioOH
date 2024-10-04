@@ -249,7 +249,7 @@
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -277,7 +277,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#xa9; 2024  Blibioteca Haia&#xae;. Todos os direitos reservados"/>
+                <Property name="text" type="java.lang.String" value="&#xa9; 2024  BlibioOH&#xae;. Todos os direitos reservados"/>
               </Properties>
             </Component>
           </SubComponents>

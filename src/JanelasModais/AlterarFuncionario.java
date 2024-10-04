@@ -13,6 +13,17 @@ public class AlterarFuncionario extends javax.swing.JDialog {
     /**
      * Creates new form AlterarUsuario
      */
+    private String id = "";
+    private String nome = "";
+    private String rg = "";
+    private String cpf = "";
+    private String dataNascimento = "";
+    private String dataAdmissao = "";
+    private String endereco = "";
+    private String telefone = "";
+    private String email = "";
+    private String codPeriodo = "";
+    private String codCargo = "";
     public AlterarFuncionario(java.awt.Frame parent, boolean modal, String id, String nome, String rg, String cpf, String dataNascimento, String dataAdmissao, String endereco, String telefone, String email, String codPeriodo, String codCargo) {
         super(parent, modal);
         initComponents();
@@ -29,6 +40,51 @@ public class AlterarFuncionario extends javax.swing.JDialog {
         tfCodPerido.setText(codPeriodo);
         tfCodCargo.setText(codCargo);
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public String getDataAdmissao() {
+        return dataAdmissao;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCodPeriodo() {
+        return codPeriodo;
+    }
+
+    public String getCodCargo() {
+        return codCargo;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -128,6 +184,11 @@ public class AlterarFuncionario extends javax.swing.JDialog {
 
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         tfCodPerido.setText("123");
 
@@ -178,9 +239,8 @@ public class AlterarFuncionario extends javax.swing.JDialog {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(tfDataNascimento)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(tfRg, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(tfRg)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel6)
@@ -292,6 +352,22 @@ public class AlterarFuncionario extends javax.swing.JDialog {
     private void tfTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfTelefoneActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+        this.id = tfId.getText();
+        this.nome = tfNome.getText();
+        this.rg = tfRg.getText();
+        this.cpf = tfCpf.getText();
+        this.dataNascimento = tfDataNascimento.getText();
+        this.dataAdmissao = tfDataAdmissao.getText();
+        this.endereco = tfEndereco.getText();
+        this.telefone = tfTelefone.getText();
+        this.email = tfEmail.getText();
+        this.codPeriodo = tfCodPerido.getText();
+        this.codCargo = tfCodCargo.getText();
+        this.dispose();
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments

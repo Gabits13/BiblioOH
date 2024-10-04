@@ -123,7 +123,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/homeheader.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="P&#xe1;gina Inicial"/>
+        <Property name="text" type="java.lang.String" value="Tela Inicial"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
