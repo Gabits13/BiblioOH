@@ -5,22 +5,32 @@
 package biblioteca;
 
 import conexao.Conexao;
-
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.font.TextAttribute;
+import java.sql.SQLException;
+import java.util.Map;
+import javax.sql.*;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
- * @author Gabriel
+ * @author Gabriel Santos
  */
 public class LoginAdmin extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login
-     */
-    Conexao con_cliente;
     
+    Conexao con_cliente;
+
+  
     public LoginAdmin() {
         initComponents();
+            con_cliente = new Conexao(); 
+            con_cliente.conecta(); 
+    
+        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
+        setIconImage(icone.getImage());
         
-         Conexao con_cliente;
     }
 
     /**
@@ -35,19 +45,19 @@ public class LoginAdmin extends javax.swing.JFrame {
         JPanel1 = new javax.swing.JPanel();
         Esquerda = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnLogar = new javax.swing.JButton();
         Direita = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN DE ADMIN");
+        setResizable(false);
 
         JPanel1.setBackground(new java.awt.Color(48, 145, 144));
         JPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -67,22 +77,22 @@ public class LoginAdmin extends javax.swing.JFrame {
         Esquerda.add(jLabel1);
         jLabel1.setBounds(50, 10, 610, 100);
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
-        Esquerda.add(jTextField2);
-        jTextField2.setBounds(30, 150, 340, 30);
+        Esquerda.add(txtUsuario);
+        txtUsuario.setBounds(30, 150, 340, 30);
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                txtSenhaActionPerformed(evt);
             }
         });
-        Esquerda.add(jPasswordField1);
-        jPasswordField1.setBounds(30, 220, 340, 30);
+        Esquerda.add(txtSenha);
+        txtSenha.setBounds(30, 220, 340, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Senha:");
@@ -94,32 +104,33 @@ public class LoginAdmin extends javax.swing.JFrame {
         Esquerda.add(jLabel3);
         jLabel3.setBounds(30, 120, 60, 20);
 
-        jButton2.setBackground(new java.awt.Color(58, 174, 173));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("Entre aqui!");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("É Usuário? Entre aqui!");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
             }
         });
-        Esquerda.add(jButton2);
-        jButton2.setBounds(90, 450, 130, 20);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("É Usuário? ");
         Esquerda.add(jLabel4);
-        jLabel4.setBounds(20, 450, 80, 20);
+        jLabel4.setBounds(120, 390, 190, 25);
 
-        jButton4.setBackground(new java.awt.Color(58, 174, 173));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setText("Login");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnLogar.setBackground(new java.awt.Color(58, 174, 173));
+        btnLogar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLogar.setText("Login");
+        btnLogar.setName("btnLogar"); // NOI18N
+        btnLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnLogarActionPerformed(evt);
             }
         });
-        Esquerda.add(jButton4);
-        jButton4.setBounds(150, 290, 110, 30);
+        Esquerda.add(btnLogar);
+        btnLogar.setBounds(150, 290, 110, 30);
 
         JPanel1.add(Esquerda);
         Esquerda.setBounds(0, 0, 400, 500);
@@ -127,41 +138,38 @@ public class LoginAdmin extends javax.swing.JFrame {
         Direita.setBackground(new java.awt.Color(48, 145, 144));
         Direita.setMinimumSize(new java.awt.Dimension(400, 500));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
-
         jLabel8.setText("© 2024  BiblioOH®. Todos os direitos reservados");
 
         javax.swing.GroupLayout DireitaLayout = new javax.swing.GroupLayout(Direita);
         Direita.setLayout(DireitaLayout);
         DireitaLayout.setHorizontalGroup(
             DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DireitaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(72, 72, 72))
             .addGroup(DireitaLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel8)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(1358, Short.MAX_VALUE))
         );
         DireitaLayout.setVerticalGroup(
             DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DireitaLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(461, 461, 461)
                 .addComponent(jLabel8)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         JPanel1.add(Direita);
-        Direita.setBounds(400, 0, 400, 500);
+        Direita.setBounds(420, 0, 1668, 500);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(403, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -170,7 +178,9 @@ public class LoginAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 68, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -181,26 +191,70 @@ public class LoginAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
+
+                          
+
+try {
+    // Monta a query manualmente, concatenando o email e a senha diretamente
+    String pesquisa = "SELECT f.* FROM funcionario f "
+                    + "INNER JOIN conta_administrador c ON f.Id_Funcionario = c.Id_Funcionario "
+                    + "WHERE f.Email = '" + txtUsuario.getText() + "' "
+                    + "AND c.Senha = '" + new String(txtSenha.getPassword()) + "'";
+
+    // Executa a query
+    con_cliente.executaSQL(pesquisa);
+
+    // Verifica se houve resultado
+    if (con_cliente.resultset.first()) {
+        
+       
+        // Acesso permitido: abre a tela do administrador
+        PageInicialAdmin mostra = new PageInicialAdmin();
+        mostra.setVisible(true);
+        dispose(); // Fecha a janela de login
+    } else {
+        // Caso não encontre o usuário ou a senha estejam errados
+        JOptionPane.showMessageDialog(null, "E-mail ou senha incorretos", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+    }
+} catch (SQLException erroSql) {
+    // Exibe mensagem de erro caso haja exceção de SQL
+    JOptionPane.showMessageDialog(null, "Erro ao acessar os dados!\n" + erroSql, "Mensagem do Programa", JOptionPane.ERROR_MESSAGE);
+}
+
+
+     
+
+    }//GEN-LAST:event_btnLogarActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        Font font = jLabel4.getFont();
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        jLabel4.setFont(font.deriveFont(attributes));
+        jLabel4.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+        jLabel4.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        jLabel4.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         Login LoginFrame = new Login();
         LoginFrame.setVisible(true);
         LoginFrame.pack();
         LoginFrame.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -211,15 +265,14 @@ public class LoginAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel Direita;
     private javax.swing.JPanel Esquerda;
     private javax.swing.JPanel JPanel1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
