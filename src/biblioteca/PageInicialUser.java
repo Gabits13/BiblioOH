@@ -7,13 +7,24 @@ import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem; 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+<<<<<<< HEAD
+import javax.swing.JOptionPane;
+=======
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
 
 
 /**
  *
+<<<<<<< HEAD
+ * @author Gabriel Santos
+ */
+
+//pagina para usuario ainda nao concluida
+=======
  * @author Admin
  */
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 public class PageInicialUser extends javax.swing.JFrame {
          Conexao con_cliente;
     
@@ -23,12 +34,40 @@ public class PageInicialUser extends javax.swing.JFrame {
 
          
         initComponents();
+<<<<<<< HEAD
+        ImageIcon icone = new ImageIcon("src/img/logo3.jfif");
+        setIconImage(icone.getImage());
+        
+=======
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         drawer=Drawer.newDrawer(this)
                 .header(new Header())
                 .background(new Color(255,255,255))
                 .backgroundTransparent(0.0f)
                 .drawerBackground(new Color(48,145,144))
                 .drawerWidth(300)
+<<<<<<< HEAD
+                .closeOnPress(false)
+                .addChild(home)
+                .addChild(contaAdm)
+                .addChild(usuarios)
+                .addChild(livro)
+                .addChild(funcionario)
+                .addChild(adLivro)
+                .addChild(emprestimos)
+                .addChild(cargos)
+                .addChild(periodo)
+                .addChild(setores)
+                
+              
+                
+                
+                .addFooter(sair)
+                
+                .build();  
+        
+        
+=======
                 .addChild(new DrawerItem("Página Inicial").icon(new ImageIcon(getClass().getResource("/img/homeheader.png"))).build())
                 .addChild(new DrawerItem("Meu Perfil").icon(new ImageIcon(getClass().getResource("/img/perfilheader.png"))).build())
                 .addChild(new DrawerItem("Livros").icon(new ImageIcon(getClass().getResource("/img/livroheader.png"))).build())
@@ -40,6 +79,7 @@ public class PageInicialUser extends javax.swing.JFrame {
                 .addFooter(new DrawerItem("Sair").icon(new ImageIcon(getClass().getResource("/img/sairheader.png"))).build())
  
                 .build();   
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     }
 
     /**
@@ -51,11 +91,175 @@ public class PageInicialUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
+        periodo = new javax.swing.JButton();
+        usuarios = new javax.swing.JButton();
+        livro = new javax.swing.JButton();
+        emprestimos2 = new javax.swing.JButton();
+        funcionario = new javax.swing.JButton();
+        sobrenos = new javax.swing.JButton();
+        cargos = new javax.swing.JButton();
+        home = new javax.swing.JButton();
+        contaAdm = new javax.swing.JButton();
+        emprestimos = new javax.swing.JButton();
+        adLivro = new javax.swing.JButton();
+        setores = new javax.swing.JButton();
+        sair = new javax.swing.JButton();
+=======
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+<<<<<<< HEAD
+        periodo.setBackground(new java.awt.Color(48, 145, 144));
+        periodo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        periodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/periodoheader.png"))); // NOI18N
+        periodo.setText("Período");
+        periodo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        periodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                periodoActionPerformed(evt);
+            }
+        });
+
+        usuarios.setBackground(new java.awt.Color(48, 145, 144));
+        usuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/userheader.png"))); // NOI18N
+        usuarios.setText("Usuarios");
+        usuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuariosActionPerformed(evt);
+            }
+        });
+
+        livro.setBackground(new java.awt.Color(48, 145, 144));
+        livro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        livro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adlivroheader.png"))); // NOI18N
+        livro.setText("Livro");
+        livro.setAlignmentY(2.0F);
+        livro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        livro.setName("livro"); // NOI18N
+        livro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                livroActionPerformed(evt);
+            }
+        });
+
+        emprestimos2.setBackground(new java.awt.Color(48, 145, 144));
+        emprestimos2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emprestimos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/emprestimoheader.png"))); // NOI18N
+        emprestimos2.setText("Empréstimos");
+        emprestimos2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        emprestimos2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emprestimos2ActionPerformed(evt);
+            }
+        });
+
+        funcionario.setBackground(new java.awt.Color(48, 145, 144));
+        funcionario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/funcheader.png"))); // NOI18N
+        funcionario.setText("Funcionário");
+        funcionario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        funcionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcionarioActionPerformed(evt);
+            }
+        });
+
+        sobrenos.setBackground(new java.awt.Color(48, 145, 144));
+        sobrenos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        sobrenos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sobrenosheader.png"))); // NOI18N
+        sobrenos.setText("Sobre Nós");
+        sobrenos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        sobrenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sobrenosActionPerformed(evt);
+            }
+        });
+
+        cargos.setBackground(new java.awt.Color(48, 145, 144));
+        cargos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cargos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cargoheader.png"))); // NOI18N
+        cargos.setText("Cargos");
+        cargos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        cargos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargosActionPerformed(evt);
+            }
+        });
+
+        home.setBackground(new java.awt.Color(48, 145, 144));
+        home.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/homeheader.png"))); // NOI18N
+        home.setText("Página Inicial");
+        home.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeActionPerformed(evt);
+            }
+        });
+
+        contaAdm.setBackground(new java.awt.Color(48, 145, 144));
+        contaAdm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contaAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perfilheader.png"))); // NOI18N
+        contaAdm.setText("Meu Perfil");
+        contaAdm.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        contaAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contaAdmActionPerformed(evt);
+            }
+        });
+
+        emprestimos.setBackground(new java.awt.Color(48, 145, 144));
+        emprestimos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emprestimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/emprestimoheader.png"))); // NOI18N
+        emprestimos.setText("Empréstimos");
+        emprestimos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        emprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emprestimosActionPerformed(evt);
+            }
+        });
+
+        adLivro.setBackground(new java.awt.Color(48, 145, 144));
+        adLivro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        adLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adlivroheader.png"))); // NOI18N
+        adLivro.setText("Administrar Livro");
+        adLivro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        adLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adLivroActionPerformed(evt);
+            }
+        });
+
+        setores.setBackground(new java.awt.Color(48, 145, 144));
+        setores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        setores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/setorheader.png"))); // NOI18N
+        setores.setText("Setores");
+        setores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        setores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setoresActionPerformed(evt);
+            }
+        });
+
+        sair.setBackground(new java.awt.Color(48, 145, 144));
+        sair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairheader.png"))); // NOI18N
+        sair.setText("Sair");
+        sair.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairActionPerformed(evt);
+            }
+        });
+
+=======
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Página Inicial");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -135,6 +339,99 @@ public class PageInicialUser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuActionPerformed
 
+<<<<<<< HEAD
+    private void periodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_periodoActionPerformed
+
+    private void usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuariosActionPerformed
+
+    private void livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livroActionPerformed
+
+    }//GEN-LAST:event_livroActionPerformed
+
+    private void emprestimos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimos2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emprestimos2ActionPerformed
+
+    private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
+
+    }//GEN-LAST:event_funcionarioActionPerformed
+
+    private void sobrenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sobrenosActionPerformed
+
+    private void cargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cargosActionPerformed
+
+    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeActionPerformed
+
+    private void contaAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contaAdmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contaAdmActionPerformed
+
+    private void emprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emprestimosActionPerformed
+
+    private void adLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adLivroActionPerformed
+
+    private void setoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_setoresActionPerformed
+
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
+        int opcao;
+        opcao = JOptionPane.showConfirmDialog(null, "Deseja mesmo fechar a janela", "Sair", JOptionPane.YES_NO_OPTION);
+        if(opcao == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_sairActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    /*public static void main(String args[]) {
+    
+    
+    /* Create and display the form 
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            PageInicialUser PageInicialFrame = new PageInicialUser();
+            PageInicialFrame.setVisible(true);
+            PageInicialFrame.pack();
+            PageInicialFrame.setLocationRelativeTo(null);
+        }
+});
+}*/
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adLivro;
+    private javax.swing.JButton cargos;
+    private javax.swing.JButton contaAdm;
+    private javax.swing.JButton emprestimos;
+    private javax.swing.JButton emprestimos2;
+    private javax.swing.JButton funcionario;
+    private javax.swing.JButton home;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton livro;
+    private javax.swing.JButton menu;
+    private javax.swing.JButton periodo;
+    private javax.swing.JButton sair;
+    private javax.swing.JButton setores;
+    private javax.swing.JButton sobrenos;
+    private javax.swing.JButton usuarios;
+=======
     /**
      * @param args the command line arguments
      */
@@ -157,5 +454,6 @@ public class PageInicialUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton menu;
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     // End of variables declaration//GEN-END:variables
 }

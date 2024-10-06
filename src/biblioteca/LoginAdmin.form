@@ -4,6 +4,10 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="LOGIN DE ADMIN"/>
+<<<<<<< HEAD
+    <Property name="resizable" type="boolean" value="false"/>
+=======
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -24,7 +28,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="403" max="32767" attributes="0"/>
+              <Component id="jLabel5" min="-2" pref="317" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+          </Group>
+=======
           <EmptySpace min="0" pref="800" max="32767" attributes="0"/>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -36,7 +48,14 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jLabel5" min="-2" pref="432" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="68" max="32767" attributes="0"/>
+          </Group>
+=======
           <EmptySpace min="0" pref="500" max="32767" attributes="0"/>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -105,14 +124,22 @@
                 </Constraint>
               </Constraints>
             </Component>
+<<<<<<< HEAD
+            <Component class="javax.swing.JTextField" name="txtUsuario">
+=======
             <Component class="javax.swing.JTextField" name="jTextField2">
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
               </Properties>
               <Events>
+<<<<<<< HEAD
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsuarioActionPerformed"/>
+=======
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -120,9 +147,15 @@
                 </Constraint>
               </Constraints>
             </Component>
+<<<<<<< HEAD
+            <Component class="javax.swing.JPasswordField" name="txtSenha">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSenhaActionPerformed"/>
+=======
             <Component class="javax.swing.JPasswordField" name="jPasswordField1">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField1ActionPerformed"/>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -156,6 +189,27 @@
                 </Constraint>
               </Constraints>
             </Component>
+<<<<<<< HEAD
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#xc9; Usu&#xe1;rio? Entre aqui!"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel4MouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel4MouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel4MouseExited"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="120" y="390" width="190" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnLogar">
+=======
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -189,6 +243,7 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="jButton4">
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ad" green="ae" red="3a" type="rgb"/>
@@ -197,9 +252,16 @@
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Login"/>
+<<<<<<< HEAD
+                <Property name="name" type="java.lang.String" value="btnLogar" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogarActionPerformed"/>
+=======
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -220,13 +282,23 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+<<<<<<< HEAD
+              <AbsoluteConstraints x="420" y="0" width="-1" height="-1"/>
+=======
               <AbsoluteConstraints x="400" y="0" width="-1" height="-1"/>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="1358" max="32767" attributes="0"/>
+=======
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -236,15 +308,20 @@
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="90" max="32767" attributes="0"/>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
+                      <EmptySpace min="-2" pref="461" max="-2" attributes="0"/>
+=======
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" pref="416" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
@@ -252,6 +329,8 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
+<<<<<<< HEAD
+=======
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -259,6 +338,7 @@
                 </Property>
               </Properties>
             </Component>
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#xa9; 2024  BiblioOH&#xae;. Todos os direitos reservados"/>
@@ -268,5 +348,15 @@
         </Container>
       </SubComponents>
     </Container>
+<<<<<<< HEAD
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/logo2.png"/>
+        </Property>
+      </Properties>
+    </Component>
+=======
+>>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
   </SubComponents>
 </Form>
