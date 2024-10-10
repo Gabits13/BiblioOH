@@ -8,11 +8,7 @@ import conexao.Conexao;
 
 /**
  *
-<<<<<<< HEAD
  * @author Gabriel Santos
-=======
- * @author Gabriel
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
  */
 public class CriarConta extends javax.swing.JFrame {
 
@@ -54,19 +50,12 @@ public class CriarConta extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         Direita = new javax.swing.JPanel();
-<<<<<<< HEAD
         jLabel3 = new javax.swing.JLabel();
-=======
-        jLabel7 = new javax.swing.JLabel();
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
-<<<<<<< HEAD
         setResizable(false);
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         JPanel1.setBackground(new java.awt.Color(48, 145, 144));
         JPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,11 +200,7 @@ public class CriarConta extends javax.swing.JFrame {
         Direita.setBackground(new java.awt.Color(48, 145, 144));
         Direita.setMinimumSize(new java.awt.Dimension(400, 500));
 
-<<<<<<< HEAD
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
-=======
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         jLabel8.setText("© 2024  BiblioOH®. Todos os direitos reservados");
 
@@ -224,7 +209,6 @@ public class CriarConta extends javax.swing.JFrame {
         DireitaLayout.setHorizontalGroup(
             DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DireitaLayout.createSequentialGroup()
-<<<<<<< HEAD
                 .addGroup(DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DireitaLayout.createSequentialGroup()
                         .addContainerGap()
@@ -233,21 +217,10 @@ public class CriarConta extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1310, Short.MAX_VALUE))
-=======
-                .addContainerGap(80, Short.MAX_VALUE)
-                .addGroup(DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DireitaLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(70, 70, 70))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DireitaLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(55, 55, 55))))
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         );
         DireitaLayout.setVerticalGroup(
             DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DireitaLayout.createSequentialGroup()
-<<<<<<< HEAD
                 .addContainerGap(172, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(141, 141, 141)
@@ -257,17 +230,6 @@ public class CriarConta extends javax.swing.JFrame {
 
         JPanel1.add(Direita);
         Direita.setBounds(400, 0, 1740, 800);
-=======
-                .addGap(119, 119, 119)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(56, 56, 56))
-        );
-
-        JPanel1.add(Direita);
-        Direita.setBounds(400, 0, 400, 800);
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -346,17 +308,10 @@ public class CriarConta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-<<<<<<< HEAD
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-=======
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;

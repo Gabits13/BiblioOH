@@ -4,8 +4,6 @@
  */
 package JanelasModais;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Guilherme
@@ -26,8 +24,6 @@ public class AlterarUsuario extends javax.swing.JDialog {
     public AlterarUsuario(java.awt.Frame parent, boolean modal, String id, String nome, String endereco, String rg, String cpf, String telefone, String email, String senha) {
         super(parent, modal);
         initComponents();
-        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
-        setIconImage(icone.getImage());
         
         tfId.setText(id);
         tfNome.setText(nome);

@@ -5,7 +5,6 @@
 package biblioteca;
 
 import conexao.Conexao;
-<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
@@ -15,12 +14,6 @@ import javax.swing.ImageIcon;
 /**
  *
  * @author Gabriel Santos
-=======
-
-/**
- *
- * @author Gabriel
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
  */
 public class Login extends javax.swing.JFrame {
         Conexao con_cliente;
@@ -29,11 +22,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-<<<<<<< HEAD
         ImageIcon icone = new ImageIcon("src/img/logoicon.png");
         setIconImage(icone.getImage());
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     }
 
     /**
@@ -54,10 +44,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-<<<<<<< HEAD
-=======
-        jButton2 = new javax.swing.JButton();
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         Direita = new javax.swing.JPanel();
@@ -66,10 +52,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
-<<<<<<< HEAD
         setResizable(false);
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         JPanel1.setBackground(new java.awt.Color(48, 145, 144));
         JPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,7 +109,6 @@ public class Login extends javax.swing.JFrame {
         Esquerda.add(jLabel5);
         jLabel5.setBounds(100, 350, 230, 30);
 
-<<<<<<< HEAD
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("É Administrador?  Entre Aqui!");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,23 +124,6 @@ public class Login extends javax.swing.JFrame {
         });
         Esquerda.add(jLabel4);
         jLabel4.setBounds(70, 450, 250, 25);
-=======
-        jButton2.setBackground(new java.awt.Color(58, 174, 173));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("Entre aqui!");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        Esquerda.add(jButton2);
-        jButton2.setBounds(130, 450, 130, 20);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("É Administrador? ");
-        Esquerda.add(jLabel4);
-        jLabel4.setBounds(20, 450, 120, 20);
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         jButton4.setBackground(new java.awt.Color(58, 174, 173));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -177,15 +142,9 @@ public class Login extends javax.swing.JFrame {
         Direita.setBackground(new java.awt.Color(48, 145, 144));
         Direita.setMinimumSize(new java.awt.Dimension(400, 500));
 
-<<<<<<< HEAD
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
 
         jLabel8.setText("© 2024  BlibioOH®. Todos os direitos reservados");
-=======
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
-
-        jLabel8.setText("© 2024  Blibioteca Haia®. Todos os direitos reservados");
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         javax.swing.GroupLayout DireitaLayout = new javax.swing.GroupLayout(Direita);
         Direita.setLayout(DireitaLayout);
@@ -196,15 +155,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(72, 72, 72))
             .addGroup(DireitaLayout.createSequentialGroup()
-<<<<<<< HEAD
                 .addGap(75, 75, 75)
                 .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-=======
-                .addGap(53, 53, 53)
-                .addComponent(jLabel8)
-                .addContainerGap(59, Short.MAX_VALUE))
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         );
         DireitaLayout.setVerticalGroup(
             DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,19 +166,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-<<<<<<< HEAD
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JPanel1.add(Direita);
         Direita.setBounds(400, 0, 478, 483);
-=======
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        JPanel1.add(Direita);
-        Direita.setBounds(400, 0, 400, 500);
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -265,7 +210,6 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-<<<<<<< HEAD
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -284,24 +228,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-=======
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         LoginAdmin LoginAdminFrame = new LoginAdmin();
         LoginAdminFrame.setVisible(true);
         LoginAdminFrame.pack();
         LoginAdminFrame.setLocationRelativeTo(null);
         this.dispose();
-<<<<<<< HEAD
     }//GEN-LAST:event_jLabel4MouseClicked
-=======
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
     /**
      * @param args the command line arguments
@@ -313,10 +245,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Esquerda;
     private javax.swing.JPanel JPanel1;
     private javax.swing.JButton jButton1;
-<<<<<<< HEAD
-=======
-    private javax.swing.JButton jButton2;
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

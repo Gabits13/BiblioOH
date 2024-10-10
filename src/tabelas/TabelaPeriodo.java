@@ -308,6 +308,9 @@ public class TabelaPeriodo extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (periodo1.isEditing()) {
+            periodo1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from periodo where Descricao like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);

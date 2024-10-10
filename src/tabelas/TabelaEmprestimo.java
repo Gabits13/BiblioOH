@@ -308,6 +308,9 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (emprestimo1.isEditing()) {
+            emprestimo1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from empresta_livro where Data_Devolucao like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);

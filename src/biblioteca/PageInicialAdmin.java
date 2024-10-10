@@ -2,27 +2,20 @@ package biblioteca;
 
 import conexao.Conexao;
 import java.awt.Color;
-<<<<<<< HEAD
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 import javaswingdev.drawer.Drawer; 
 import javaswingdev.drawer.DrawerController; 
 import javaswingdev.drawer.DrawerItem; 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-<<<<<<< HEAD
 import javax.swing.JOptionPane;
 import tabelas.*;
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
 
 
 /**
  *
-<<<<<<< HEAD
  * @author Gabriel Santos
  */
 public class PageInicialAdmin extends javax.swing.JFrame {
@@ -43,32 +36,17 @@ public class PageInicialAdmin extends javax.swing.JFrame {
    TabelaAdministrador tabelaAdministrador = new TabelaAdministrador();
    TabelaAdministrarLivro tabelaAdministrarLivro = new TabelaAdministrarLivro();
    
-=======
- * @author Admin
- */
-public class PageInicialAdmin extends javax.swing.JFrame {
-
-      Conexao con_cliente;
-        
-   private DrawerController drawer;
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
-    public PageInicialAdmin() {
-      
-       
+    public PageInicialAdmin(Funcionario f) {
         
         initComponents();
-<<<<<<< HEAD
         ImageIcon icone = new ImageIcon("src/img/logoicon.png");
         setIconImage(icone.getImage());
 
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         drawer=Drawer.newDrawer(this)
-                .header(new Header())
+                .header(new Header(f.getNome(), f.getEmail()))
                 .background(new Color(255,255,255))
                 .backgroundTransparent(0.0f)
                 .drawerBackground(new Color(48,145,144))
-<<<<<<< HEAD
                 .drawerWidth(280)
                 .closeOnPress(false)
                 .addChild(home)
@@ -125,33 +103,13 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         usuario02.setText("Tabela Usuario");
         sobrenos02.setText("Formulário dos Desenvolvedores");
         emprestimo02.setText("Tabela Emprestimo");
-        periodo02.setText("Tabela Periodo");
         cargos02.setText("Tabela Cargo");
         setores02.setText("Tabela Setor");
-        administrador02.setText("Tabela Administrador");
-        adLivro02.setText("Tabela administra_livro");
+        administrador02.setText("Tabela Conta_Administrador");
+        periodo02.setText("Tabela Periodo");
+        adLivro02.setText("Tabela Administra_Livro");
         
         sair02.setText("Sair");
-=======
-                .drawerWidth(300)
-                .closeOnPress(false)
-             .addChild(new DrawerItem("Página Inicial").icon(new ImageIcon(getClass().getResource("/img/homeheader.png"))).build())
-                .addChild(new DrawerItem("Meu Perfil").icon(new ImageIcon(getClass().getResource("/img/perfilheader.png"))).build())
-                .addChild(new DrawerItem("Usuários").icon(new ImageIcon(getClass().getResource("/img/userheader.png"))).build())
-                .addChild(new DrawerItem("Funcionários").icon(new ImageIcon(getClass().getResource("/img/funcheader.png"))).build())
-                .addChild(new DrawerItem("Livros").icon(new ImageIcon(getClass().getResource("/img/livroheader.png"))).build())
-                .addChild(new DrawerItem("Administrar Livros").icon(new ImageIcon(getClass().getResource("/img/adlivroheader.png"))).build())
-                .addChild(new DrawerItem("Empréstimos").icon(new ImageIcon(getClass().getResource("/img/emprestimoheader.png"))).build())
-                .addChild(new DrawerItem("Cargos").icon(new ImageIcon(getClass().getResource("/img/cargoheader.png"))).build())
-                .addChild(new DrawerItem("Período").icon(new ImageIcon(getClass().getResource("/img/periodoheader.png"))).build())
-                .addChild(new DrawerItem("Setores").icon(new ImageIcon(getClass().getResource("/img/setorheader.png"))).build())
-                .addChild(new DrawerItem("Sobre Nós").icon(new ImageIcon(getClass().getResource("/img/sobrenosheader.png"))).build())
-                
-                .addFooter(new DrawerItem("Sair").icon(new ImageIcon(getClass().getResource("/img/sairheader.png"))).build())
-                
-                .build();  
-         drawer.show();
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     }
 
     /**
@@ -163,7 +121,6 @@ public class PageInicialAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
         periodo = new javax.swing.JButton();
         usuarios = new javax.swing.JButton();
         livro = new javax.swing.JButton();
@@ -436,18 +393,6 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(48, 145, 144));
-=======
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Página Inicial");
-        setPreferredSize(new java.awt.Dimension(1200, 900));
-        setResizable(false);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         jPanel2.setBackground(new java.awt.Color(48, 145, 144));
 
@@ -458,11 +403,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-<<<<<<< HEAD
                 .addContainerGap(711, Short.MAX_VALUE)
-=======
-                .addContainerGap(807, Short.MAX_VALUE)
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
                 .addComponent(jLabel1)
                 .addGap(405, 405, 405))
         );
@@ -473,7 +414,6 @@ public class PageInicialAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel1))
         );
 
-<<<<<<< HEAD
         main.setMaximumSize(new java.awt.Dimension(900, 800));
         main.setMinimumSize(new java.awt.Dimension(900, 800));
         main.setLayout(new java.awt.CardLayout());
@@ -481,37 +421,27 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blibiotecaimg.jpg"))); // NOI18N
         main.add(imgHome, "card2");
 
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-=======
-                .addGap(0, 688, Short.MAX_VALUE))
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
@@ -687,8 +617,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
     private void sair02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sair02ActionPerformed
         int opcao;
         Object [] botoes = {"Sim","Não"};
-        opcao = JOptionPane.showOptionDialog(null, "Deseja fechar o programa: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);
-        if(opcao == JOptionPane.YES_OPTION){
+        opcao = JOptionPane.showOptionDialog(null, "Deseja fechar o programa: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);        if(opcao == JOptionPane.YES_OPTION){
             System.exit(0);
         }
     }//GEN-LAST:event_sair02ActionPerformed
@@ -753,7 +682,6 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_usuario02ActionPerformed
 
-    // Botão do Dashboard.
     private void administradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administradorActionPerformed
         tabelaAdministrador.setVisible(true);
         
@@ -768,8 +696,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaSetor.setVisible(false);
         tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_administradorActionPerformed
-    
-    // De volta pros botões do popUP.
+
     private void sobrenos02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenos02ActionPerformed
         sobreNos.setVisible(true);
         
@@ -800,20 +727,20 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_home02ActionPerformed
 
-    private void cargos02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargos02ActionPerformed
-        tabelaCargo.setVisible(true);
+    private void administrador02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administrador02ActionPerformed
+        tabelaAdministrador.setVisible(true);
         
         imgHome.setVisible(false);
         tabelaFuncionario.setVisible(false);
         tabelaLivro.setVisible(false);
-        sobreNos.setVisible(false);
-        tabelaEmprestimo.setVisible(false);
         tabelaUsuario.setVisible(false);
+        sobreNos.setVisible(false);
         tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
         tabelaSetor.setVisible(false);
-        tabelaAdministrador.setVisible(false);
         tabelaAdministrarLivro.setVisible(false);
-    }//GEN-LAST:event_cargos02ActionPerformed
+    }//GEN-LAST:event_administrador02ActionPerformed
 
     private void periodo02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodo02ActionPerformed
         tabelaPeriodo.setVisible(true);
@@ -830,35 +757,20 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_periodo02ActionPerformed
 
-    private void setores02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setores02ActionPerformed
-        tabelaSetor.setVisible(true);
+    private void cargos02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargos02ActionPerformed
+        tabelaCargo.setVisible(true);
         
         imgHome.setVisible(false);
         tabelaFuncionario.setVisible(false);
         tabelaLivro.setVisible(false);
-        tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
-        tabelaPeriodo.setVisible(false);
-        tabelaCargo.setVisible(false);
         tabelaEmprestimo.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaSetor.setVisible(false);
         tabelaAdministrador.setVisible(false);
         tabelaAdministrarLivro.setVisible(false);
-    }//GEN-LAST:event_setores02ActionPerformed
-
-    private void administrador02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administrador02ActionPerformed
-        tabelaAdministrador.setVisible(true);
-        
-        imgHome.setVisible(false);
-        tabelaFuncionario.setVisible(false);
-        tabelaLivro.setVisible(false);
-        tabelaUsuario.setVisible(false);
-        sobreNos.setVisible(false);
-        tabelaPeriodo.setVisible(false);
-        tabelaCargo.setVisible(false);
-        tabelaEmprestimo.setVisible(false);
-        tabelaSetor.setVisible(false);
-        tabelaAdministrarLivro.setVisible(false);
-    }//GEN-LAST:event_administrador02ActionPerformed
+    }//GEN-LAST:event_cargos02ActionPerformed
 
     private void adLivro02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adLivro02ActionPerformed
         tabelaAdministrarLivro.setVisible(true);
@@ -874,6 +786,21 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaAdministrador.setVisible(false);
         tabelaSetor.setVisible(false);
     }//GEN-LAST:event_adLivro02ActionPerformed
+
+    private void setores02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setores02ActionPerformed
+        tabelaSetor.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
+    }//GEN-LAST:event_setores02ActionPerformed
 
     
     /**
@@ -915,38 +842,5 @@ public class PageInicialAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem sobrenos02;
     private javax.swing.JMenuItem usuario02;
     private javax.swing.JButton usuarios;
-=======
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-    
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 PageInicialAdmin PageInicialFrame = new PageInicialAdmin();
-                 PageInicialFrame.setVisible(true);
-                 PageInicialFrame.pack();
-                 PageInicialFrame.setLocationRelativeTo(null);
-            }
-        });
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     // End of variables declaration//GEN-END:variables
 }

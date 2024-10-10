@@ -23,11 +23,7 @@ public class Conexao {
         try {
             Class.forName(driver);
             conexao = DriverManager.getConnection(url, usuario, senha);
-<<<<<<< HEAD
            // JOptionPane.showMessageDialog(null, "Conexão estabelecida", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-=======
-            JOptionPane.showMessageDialog(null, "Conexão estabelecida", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         } catch (ClassNotFoundException Driver) {
             JOptionPane.showMessageDialog(null, "Driver não localizado: " + Driver, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE); 
             result = false;
@@ -41,11 +37,7 @@ public class Conexao {
     public void desconecta() {
         try {
             conexao.close();
-<<<<<<< HEAD
           //  JOptionPane.showMessageDialog(null, "Conexão com banco fechada", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-=======
-            JOptionPane.showMessageDialog(null, "Conexão com banco fechada", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         } catch (SQLException fecha) {
             JOptionPane.showMessageDialog(null, "Erro ao fechar o banco: " + fecha, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);   
         }

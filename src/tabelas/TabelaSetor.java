@@ -300,6 +300,9 @@ public class TabelaSetor extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (setor1.isEditing()) {
+            setor1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from Setor where Genero like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);

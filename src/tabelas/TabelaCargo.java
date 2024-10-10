@@ -226,7 +226,7 @@ public class TabelaCargo extends javax.swing.JPanel {
 
         btnUltimo.setText("Ultimo");
 
-        jLabel2.setText("Nome");
+        jLabel2.setText("Nome_Cargo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -247,7 +247,7 @@ public class TabelaCargo extends javax.swing.JPanel {
                         .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                         .addComponent(btnProximo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnterior)
@@ -308,6 +308,9 @@ public class TabelaCargo extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (cargo1.isEditing()) {
+            cargo1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from Cargo where Nome_Cargo like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);

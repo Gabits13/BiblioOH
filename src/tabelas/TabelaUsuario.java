@@ -1,4 +1,4 @@
-/*
+      /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
@@ -347,6 +347,9 @@ public class TabelaUsuario extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (usuario1.isEditing()) {
+            usuario1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from usuario where Nome like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);

@@ -4,8 +4,6 @@
  */
 package JanelasModais;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Guilherme
@@ -22,8 +20,6 @@ public class AlterarEmprestimo extends javax.swing.JDialog {
     public AlterarEmprestimo(java.awt.Frame parent, boolean modal, String idUsuario, String codLivro, String emissao, String devolucao) {
         super(parent, modal);
         initComponents();
-        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
-        setIconImage(icone.getImage());
         
         tfIdUsuario.setText(idUsuario);
         tfCodLivro.setText(codLivro);

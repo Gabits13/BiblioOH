@@ -4,8 +4,6 @@
  */
 package JanelasModais;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Guilherme
@@ -28,8 +26,6 @@ public class AlterarLivro extends javax.swing.JDialog {
     public AlterarLivro(java.awt.Frame parent, boolean modal, String codLivro, String titulo, String autor, String dataLancamento, String genero, String qtdePag, String exemplares, String editora, String isbn, String codSetor) {
         super(parent, modal);
         initComponents();
-        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
-        setIconImage(icone.getImage());
         
         tfCodLivro.setText(codLivro);
         tfTitulo.setText(titulo);

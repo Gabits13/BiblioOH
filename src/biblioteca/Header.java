@@ -6,24 +6,23 @@ package biblioteca;
 
 /**
  *
-<<<<<<< HEAD
  * @author Gabriel Santos
-=======
- * @author Admin
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
  */
 public class Header extends javax.swing.JPanel {
 
+    String nome02;
+    String email02;
+    
     /**
      * Creates new form Header
+     * @param nome01
+     * @param email01
      */
-    public Header() {
+    
+    public Header(String nome01, String email01) {
+        nome02 = nome01;
+        email02 = email01;
         initComponents();
-<<<<<<< HEAD
-        
-        nome.setText("Usuario");
-=======
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     }
 
     /**
@@ -36,41 +35,24 @@ public class Header extends javax.swing.JPanel {
     private void initComponents() {
 
         imageAvatar1 = new biblioteca.ImageAvatar();
-<<<<<<< HEAD
         nome = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
-=======
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         setBackground(new java.awt.Color(230, 118, 0));
 
         imageAvatar1.setBorderSize(3);
         imageAvatar1.setBorderSpace(2);
-<<<<<<< HEAD
         imageAvatar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/img/perfil.png"))); // NOI18N
 
         nome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nome.setText("Usuário");
+        nome.setText(nome02);
+        nome.setToolTipText("");
 
         email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         email.setForeground(new java.awt.Color(204, 204, 204));
         email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        email.setText("Usuário@biblioteca.com");
-=======
-        imageAvatar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/img/foto.jpg"))); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Gabriel Santos");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("gabriel.santos@gmail.com");
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
+        email.setText(email02);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,22 +62,14 @@ public class Header extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imageAvatar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-<<<<<<< HEAD
                     .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))))
-=======
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))))
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -103,28 +77,13 @@ public class Header extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(email)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-=======
-                .addGap(19, 19, 19)
-                .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(32, Short.MAX_VALUE))
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
     private javax.swing.JLabel email;
     private biblioteca.ImageAvatar imageAvatar1;
     private javax.swing.JLabel nome;
-=======
-    private biblioteca.ImageAvatar imageAvatar1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     // End of variables declaration//GEN-END:variables
 }

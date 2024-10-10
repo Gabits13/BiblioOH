@@ -4,8 +4,6 @@
  */
 package JanelasModais;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Guilherme
@@ -29,8 +27,6 @@ public class NovoRegistroFuncionario extends javax.swing.JDialog {
     public NovoRegistroFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
-        setIconImage(icone.getImage());
     }
 
     public String getId() {

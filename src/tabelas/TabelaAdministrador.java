@@ -291,6 +291,9 @@ public class TabelaAdministrador extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (administrador1.isEditing()) {
+            administrador1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from conta_administrador where Id_Funcionario like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);

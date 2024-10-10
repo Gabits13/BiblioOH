@@ -4,8 +4,6 @@
  */
 package JanelasModais;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Guilherme
@@ -29,8 +27,6 @@ public class AlterarFuncionario extends javax.swing.JDialog {
     public AlterarFuncionario(java.awt.Frame parent, boolean modal, String id, String nome, String rg, String cpf, String dataNascimento, String dataAdmissao, String endereco, String telefone, String email, String codPeriodo, String codCargo) {
         super(parent, modal);
         initComponents();
-        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
-        setIconImage(icone.getImage());
         
         tfId.setText(id);
         tfNome.setText(nome);

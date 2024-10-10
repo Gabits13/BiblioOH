@@ -5,7 +5,6 @@
 package biblioteca;
 
 import conexao.Conexao;
-<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,6 +14,7 @@ import java.util.Map;
 import javax.sql.*;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gabriel Santos
@@ -22,8 +22,8 @@ import javax.swing.JOptionPane;
 public class LoginAdmin extends javax.swing.JFrame {
     
     Conexao con_cliente;
-
-  
+    Funcionario funcionario = new Funcionario();
+    
     public LoginAdmin() {
         initComponents();
             con_cliente = new Conexao(); 
@@ -32,24 +32,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         ImageIcon icone = new ImageIcon("src/img/logoicon.png");
         setIconImage(icone.getImage());
         
-=======
-
-/**
- *
- * @author Gabriel
- */
-public class LoginAdmin extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login
-     */
-    Conexao con_cliente;
-    
-    public LoginAdmin() {
-        initComponents();
-        
-         Conexao con_cliente;
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     }
 
     /**
@@ -64,7 +46,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         JPanel1 = new javax.swing.JPanel();
         Esquerda = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-<<<<<<< HEAD
         txtUsuario = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
@@ -78,21 +59,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN DE ADMIN");
         setResizable(false);
-=======
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        Direita = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("LOGIN DE ADMIN");
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         JPanel1.setBackground(new java.awt.Color(48, 145, 144));
         JPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,7 +78,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         Esquerda.add(jLabel1);
         jLabel1.setBounds(50, 10, 610, 100);
 
-<<<<<<< HEAD
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,24 +94,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         });
         Esquerda.add(txtSenha);
         txtSenha.setBounds(30, 220, 340, 30);
-=======
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        Esquerda.add(jTextField2);
-        jTextField2.setBounds(30, 150, 340, 30);
-
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
-        Esquerda.add(jPasswordField1);
-        jPasswordField1.setBounds(30, 220, 340, 30);
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Senha:");
@@ -158,7 +105,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         Esquerda.add(jLabel3);
         jLabel3.setBounds(30, 120, 60, 20);
 
-<<<<<<< HEAD
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("É Usuário? Entre aqui!");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,34 +132,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         });
         Esquerda.add(btnLogar);
         btnLogar.setBounds(150, 290, 110, 30);
-=======
-        jButton2.setBackground(new java.awt.Color(58, 174, 173));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("Entre aqui!");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        Esquerda.add(jButton2);
-        jButton2.setBounds(90, 450, 130, 20);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("É Usuário? ");
-        Esquerda.add(jLabel4);
-        jLabel4.setBounds(20, 450, 80, 20);
-
-        jButton4.setBackground(new java.awt.Color(58, 174, 173));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setText("Login");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        Esquerda.add(jButton4);
-        jButton4.setBounds(150, 290, 110, 30);
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         JPanel1.add(Esquerda);
         Esquerda.setBounds(0, 0, 400, 500);
@@ -221,68 +139,38 @@ public class LoginAdmin extends javax.swing.JFrame {
         Direita.setBackground(new java.awt.Color(48, 145, 144));
         Direita.setMinimumSize(new java.awt.Dimension(400, 500));
 
-<<<<<<< HEAD
-=======
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
-
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         jLabel8.setText("© 2024  BiblioOH®. Todos os direitos reservados");
 
         javax.swing.GroupLayout DireitaLayout = new javax.swing.GroupLayout(Direita);
         Direita.setLayout(DireitaLayout);
         DireitaLayout.setHorizontalGroup(
             DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
             .addGroup(DireitaLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel8)
                 .addContainerGap(1358, Short.MAX_VALUE))
-=======
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DireitaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(72, 72, 72))
-            .addGroup(DireitaLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel8)
-                .addContainerGap(90, Short.MAX_VALUE))
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         );
         DireitaLayout.setVerticalGroup(
             DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DireitaLayout.createSequentialGroup()
-<<<<<<< HEAD
                 .addGap(461, 461, 461)
-=======
-                .addGap(39, 39, 39)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
                 .addComponent(jLabel8)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         JPanel1.add(Direita);
-<<<<<<< HEAD
         Direita.setBounds(420, 0, 1668, 500);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
-=======
-        Direita.setBounds(400, 0, 400, 500);
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(403, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
-=======
-            .addGap(0, 800, Short.MAX_VALUE)
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -291,13 +179,9 @@ public class LoginAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 68, Short.MAX_VALUE))
-=======
-            .addGap(0, 500, Short.MAX_VALUE)
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -308,7 +192,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
@@ -330,9 +213,29 @@ try {
     // Verifica se houve resultado
     if (con_cliente.resultset.first()) {
         
-       
+       try{
+            con_cliente.executaSQL("select * from funcionario where Email like '" + txtUsuario.getText() + "'");
+            con_cliente.resultset.next();
+
+            funcionario.setId(con_cliente.resultset.getString("Id_Funcionario"));
+            funcionario.setNome(con_cliente.resultset.getString("Nome"));
+            funcionario.setRg(con_cliente.resultset.getString("RG"));
+            funcionario.setCpf(con_cliente.resultset.getString("CPF"));
+            funcionario.setDataNasc(con_cliente.resultset.getString("Data_Nasc"));
+            funcionario.setDataAdmissao(con_cliente.resultset.getString("Data_Admissao"));
+            funcionario.setEndereco(con_cliente.resultset.getString("Endereco"));
+            funcionario.setTelefone(con_cliente.resultset.getString("Telefone"));
+            funcionario.setEmail(con_cliente.resultset.getString("Email"));
+            funcionario.setCodPeriodo(con_cliente.resultset.getString("Cod_Periodo"));
+            funcionario.setCodCargo(con_cliente.resultset.getString("Cod_Cargo"));
+            
+        } 
+        catch (SQLException erroSql) {
+            // Exibe mensagem de erro caso haja exceção de SQL
+            JOptionPane.showMessageDialog(null, "Erro ao Listar os dados!\n" + erroSql, "Mensagem do Programa", JOptionPane.ERROR_MESSAGE);
+        }
         // Acesso permitido: abre a tela do administrador
-        PageInicialAdmin mostra = new PageInicialAdmin();
+        PageInicialAdmin mostra = new PageInicialAdmin(funcionario);
         mostra.setVisible(true);
         dispose(); // Fecha a janela de login
     } else {
@@ -343,9 +246,6 @@ try {
     // Exibe mensagem de erro caso haja exceção de SQL
     JOptionPane.showMessageDialog(null, "Erro ao acessar os dados!\n" + erroSql, "Mensagem do Programa", JOptionPane.ERROR_MESSAGE);
 }
-
-
-     
 
     }//GEN-LAST:event_btnLogarActionPerformed
 
@@ -367,32 +267,12 @@ try {
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-=======
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
         Login LoginFrame = new Login();
         LoginFrame.setVisible(true);
         LoginFrame.pack();
         LoginFrame.setLocationRelativeTo(null);
         this.dispose();
-<<<<<<< HEAD
     }//GEN-LAST:event_jLabel4MouseClicked
-=======
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
 
     /**
      * @param args the command line arguments
@@ -403,26 +283,14 @@ try {
     private javax.swing.JPanel Direita;
     private javax.swing.JPanel Esquerda;
     private javax.swing.JPanel JPanel1;
-<<<<<<< HEAD
     private javax.swing.JButton btnLogar;
-=======
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-<<<<<<< HEAD
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
-=======
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField2;
->>>>>>> afbbb357595d021912e2ce7eca2c6bfc2d6aa8c6
     // End of variables declaration//GEN-END:variables
 }

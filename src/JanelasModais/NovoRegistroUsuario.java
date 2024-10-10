@@ -4,8 +4,6 @@
  */
 package JanelasModais;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Guilherme
@@ -26,8 +24,6 @@ public class NovoRegistroUsuario extends javax.swing.JDialog {
     public NovoRegistroUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
-        setIconImage(icone.getImage());
     }
 
     public String getId() {
