@@ -5,6 +5,7 @@
 package tabelas;
 
 import JanelasModais.AlterarUsuario;
+import JanelasModais.MultaTeste;
 import JanelasModais.NovoRegistroUsuario;
 import conexao.Conexao;
 import java.awt.Color;
@@ -249,6 +250,11 @@ public class TabelaUsuario extends javax.swing.JPanel {
         });
 
         btnProximo.setText("Próximo");
+        btnProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximoActionPerformed(evt);
+            }
+        });
 
         btnAnterior.setText("Anterior");
 
@@ -347,6 +353,9 @@ public class TabelaUsuario extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (usuario1.isEditing()) {
+                usuario1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from usuario where Nome like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);
@@ -361,6 +370,11 @@ public class TabelaUsuario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "\n Os dados digitados não foram localizados!! :\n" + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnPesquisaActionPerformed
+
+    private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnProximoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

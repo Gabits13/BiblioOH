@@ -374,6 +374,9 @@ public class TabelaFuncionario extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (funcionario1.isEditing()) {
+                funcionario1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from funcionario where Nome like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);

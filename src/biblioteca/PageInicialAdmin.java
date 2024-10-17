@@ -30,6 +30,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
    TabelaLivro tabelaLivro = new TabelaLivro();
    TabelaEmprestimo tabelaEmprestimo = new TabelaEmprestimo();
    TabelaUsuario tabelaUsuario = new TabelaUsuario();
+   TabelaPeriodo tabelaPeriodo = new TabelaPeriodo();
+   TabelaCargo tabelaCargo = new TabelaCargo();
+   TabelaSetor tabelaSetor = new TabelaSetor();
+   TabelaAdministrador tabelaAdministrador = new TabelaAdministrador();
+   TabelaAdministrarLivro tabelaAdministrarLivro = new TabelaAdministrarLivro();
    
     public PageInicialAdmin() {
       
@@ -50,6 +55,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
                 .addChild(usuarios)
                 .addChild(livro)
                 .addChild(funcionario)
+                .addChild(administrador)
                 .addChild(adLivro)
                 .addChild(emprestimos)
                 .addChild(cargos)
@@ -68,12 +74,22 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         main.add(tabelaLivro);
         main.add(tabelaEmprestimo);
         main.add(tabelaUsuario);
+        main.add(tabelaPeriodo);
+        main.add(tabelaCargo);
+        main.add(tabelaSetor);
+        main.add(tabelaAdministrador);
+        main.add(tabelaAdministrarLivro);
         main.add(sobreNos);
         
         tabelaFuncionario.setVisible(false);
         tabelaLivro.setVisible(false);
         tabelaEmprestimo.setVisible(false);
         tabelaUsuario.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
         sobreNos.setVisible(false);
         
         // Pequeno código do JPopupMenu.
@@ -89,6 +105,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         usuario02.setText("Tabela Usuario");
         sobrenos02.setText("Formulário dos Desenvolvedores");
         emprestimo02.setText("Tabela Emprestimo");
+        cargos02.setText("Tabela Cargo");
+        setores02.setText("Tabela Setor");
+        administrador02.setText("Tabela Conta_Administrador");
+        periodo02.setText("Tabela Periodo");
+        adLivro02.setText("Tabela Administra_Livro");
         
         sair02.setText("Sair");
     }
@@ -118,9 +139,14 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         home02 = new javax.swing.JMenuItem();
         separador2 = new javax.swing.JPopupMenu.Separator();
         funcionario02 = new javax.swing.JMenuItem();
+        administrador02 = new javax.swing.JMenuItem();
         livro02 = new javax.swing.JMenuItem();
         usuario02 = new javax.swing.JMenuItem();
         emprestimo02 = new javax.swing.JMenuItem();
+        periodo02 = new javax.swing.JMenuItem();
+        cargos02 = new javax.swing.JMenuItem();
+        setores02 = new javax.swing.JMenuItem();
+        adLivro02 = new javax.swing.JMenuItem();
         separador1 = new javax.swing.JPopupMenu.Separator();
         sobrenos02 = new javax.swing.JMenuItem();
         separador = new javax.swing.JPopupMenu.Separator();
@@ -245,7 +271,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
 
         administrador.setBackground(new java.awt.Color(48, 145, 144));
         administrador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        administrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/periodoheader.png"))); // NOI18N
+        administrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perfilheader.png"))); // NOI18N
         administrador.setText("Administradores");
         administrador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         administrador.addActionListener(new java.awt.event.ActionListener() {
@@ -282,6 +308,14 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         });
         popup.add(funcionario02);
 
+        administrador02.setText("jMenuItem1");
+        administrador02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                administrador02ActionPerformed(evt);
+            }
+        });
+        popup.add(administrador02);
+
         livro02.setText("jMenuItem1");
         livro02.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,6 +339,38 @@ public class PageInicialAdmin extends javax.swing.JFrame {
             }
         });
         popup.add(emprestimo02);
+
+        periodo02.setText("jMenuItem1");
+        periodo02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                periodo02ActionPerformed(evt);
+            }
+        });
+        popup.add(periodo02);
+
+        cargos02.setText("jMenuItem1");
+        cargos02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargos02ActionPerformed(evt);
+            }
+        });
+        popup.add(cargos02);
+
+        setores02.setText("jMenuItem1");
+        setores02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setores02ActionPerformed(evt);
+            }
+        });
+        popup.add(setores02);
+
+        adLivro02.setText("jMenuItem1");
+        adLivro02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adLivro02ActionPerformed(evt);
+            }
+        });
+        popup.add(adLivro02);
         popup.add(separador1);
 
         sobrenos02.setText("jMenuItem1");
@@ -392,7 +458,18 @@ public class PageInicialAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void periodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoActionPerformed
-        // TODO add your handling code here:
+        tabelaPeriodo.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_periodoActionPerformed
 
     private void usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosActionPerformed
@@ -403,6 +480,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaLivro.setVisible(false);
         sobreNos.setVisible(false);
         tabelaEmprestimo.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_usuariosActionPerformed
 
     private void livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livroActionPerformed
@@ -413,6 +495,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
         tabelaEmprestimo.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_livroActionPerformed
 
     private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
@@ -423,10 +510,26 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaEmprestimo.setVisible(false);
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_funcionarioActionPerformed
 
     private void cargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargosActionPerformed
-        // TODO add your handling code here:
+        tabelaCargo.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_cargosActionPerformed
 
     private void sobrenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenosActionPerformed
@@ -437,6 +540,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaEmprestimo.setVisible(false);
         tabelaUsuario.setVisible(false);
         tabelaFuncionario.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_sobrenosActionPerformed
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
@@ -447,6 +555,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
         tabelaLivro.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_homeActionPerformed
 
     private void emprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimosActionPerformed
@@ -457,20 +570,47 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaLivro.setVisible(false);
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_emprestimosActionPerformed
 
     private void adLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adLivroActionPerformed
-        // TODO add your handling code here:
+        tabelaAdministrarLivro.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaSetor.setVisible(false);
     }//GEN-LAST:event_adLivroActionPerformed
 
     private void setoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setoresActionPerformed
-        // TODO add your handling code here:
+        tabelaSetor.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_setoresActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         int opcao;
-        opcao = JOptionPane.showConfirmDialog(null, "Deseja mesmo fechar a janela", "Sair", JOptionPane.YES_NO_OPTION);
-        if(opcao == JOptionPane.YES_OPTION){
+        Object [] botoes = {"Sim","Não"};
+        opcao = JOptionPane.showOptionDialog(null, "Deseja fechar o programa: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);        if(opcao == JOptionPane.YES_OPTION){
             System.exit(0);
         }
     }//GEN-LAST:event_sairActionPerformed
@@ -478,8 +618,8 @@ public class PageInicialAdmin extends javax.swing.JFrame {
     // Códificação dos botõe do JPopupMenu.
     private void sair02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sair02ActionPerformed
         int opcao;
-        opcao = JOptionPane.showConfirmDialog(null, "Deseja mesmo fechar a janela", "Sair", JOptionPane.YES_NO_OPTION);
-        if(opcao == JOptionPane.YES_OPTION){
+        Object [] botoes = {"Sim","Não"};
+        opcao = JOptionPane.showOptionDialog(null, "Deseja fechar o programa: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);        if(opcao == JOptionPane.YES_OPTION){
             System.exit(0);
         }
     }//GEN-LAST:event_sair02ActionPerformed
@@ -492,6 +632,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaEmprestimo.setVisible(false);
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_funcionario02ActionPerformed
 
     private void livro02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livro02ActionPerformed
@@ -502,6 +647,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
         tabelaEmprestimo.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_livro02ActionPerformed
 
     private void emprestimo02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimo02ActionPerformed
@@ -512,6 +662,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaLivro.setVisible(false);
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_emprestimo02ActionPerformed
 
     private void usuario02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuario02ActionPerformed
@@ -522,10 +677,26 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaLivro.setVisible(false);
         sobreNos.setVisible(false);
         tabelaEmprestimo.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_usuario02ActionPerformed
 
     private void administradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administradorActionPerformed
-        // TODO add your handling code here:
+        tabelaAdministrador.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_administradorActionPerformed
 
     private void sobrenos02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenos02ActionPerformed
@@ -536,6 +707,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaEmprestimo.setVisible(false);
         tabelaUsuario.setVisible(false);
         tabelaFuncionario.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_sobrenos02ActionPerformed
 
     private void home02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_home02ActionPerformed
@@ -546,7 +722,87 @@ public class PageInicialAdmin extends javax.swing.JFrame {
         tabelaUsuario.setVisible(false);
         sobreNos.setVisible(false);
         tabelaLivro.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
     }//GEN-LAST:event_home02ActionPerformed
+
+    private void administrador02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administrador02ActionPerformed
+        tabelaAdministrador.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
+    }//GEN-LAST:event_administrador02ActionPerformed
+
+    private void periodo02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodo02ActionPerformed
+        tabelaPeriodo.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
+    }//GEN-LAST:event_periodo02ActionPerformed
+
+    private void cargos02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargos02ActionPerformed
+        tabelaCargo.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaSetor.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
+    }//GEN-LAST:event_cargos02ActionPerformed
+
+    private void adLivro02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adLivro02ActionPerformed
+        tabelaAdministrarLivro.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaSetor.setVisible(false);
+    }//GEN-LAST:event_adLivro02ActionPerformed
+
+    private void setores02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setores02ActionPerformed
+        tabelaSetor.setVisible(true);
+        
+        imgHome.setVisible(false);
+        tabelaFuncionario.setVisible(false);
+        tabelaLivro.setVisible(false);
+        tabelaUsuario.setVisible(false);
+        sobreNos.setVisible(false);
+        tabelaPeriodo.setVisible(false);
+        tabelaCargo.setVisible(false);
+        tabelaEmprestimo.setVisible(false);
+        tabelaAdministrador.setVisible(false);
+        tabelaAdministrarLivro.setVisible(false);
+    }//GEN-LAST:event_setores02ActionPerformed
 
     
     /**
@@ -556,8 +812,11 @@ public class PageInicialAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adLivro;
+    private javax.swing.JMenuItem adLivro02;
     private javax.swing.JButton administrador;
+    private javax.swing.JMenuItem administrador02;
     private javax.swing.JButton cargos;
+    private javax.swing.JMenuItem cargos02;
     private javax.swing.JMenuItem emprestimo02;
     private javax.swing.JButton emprestimos;
     private javax.swing.JButton funcionario;
@@ -572,6 +831,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem livro02;
     private javax.swing.JLayeredPane main;
     private javax.swing.JButton periodo;
+    private javax.swing.JMenuItem periodo02;
     private javax.swing.JPopupMenu popup;
     private javax.swing.JButton sair;
     private javax.swing.JMenuItem sair02;
@@ -579,6 +839,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator separador1;
     private javax.swing.JPopupMenu.Separator separador2;
     private javax.swing.JButton setores;
+    private javax.swing.JMenuItem setores02;
     private javax.swing.JButton sobrenos;
     private javax.swing.JMenuItem sobrenos02;
     private javax.swing.JMenuItem usuario02;

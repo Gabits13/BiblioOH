@@ -30,7 +30,7 @@ public class LoginAdmin extends javax.swing.JFrame {
     
         ImageIcon icone = new ImageIcon("src/img/logoicon.png");
         setIconImage(icone.getImage());
-        
+        getRootPane().setDefaultButton(btnLogar);
     }
 
     /**
@@ -129,6 +129,11 @@ public class LoginAdmin extends javax.swing.JFrame {
                 btnLogarActionPerformed(evt);
             }
         });
+        btnLogar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLogarKeyPressed(evt);
+            }
+        });
         Esquerda.add(btnLogar);
         btnLogar.setBounds(150, 290, 110, 30);
 
@@ -197,7 +202,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
 
-                          
+     getRootPane().setDefaultButton(btnLogar);                     
 
 try {
     // Monta a query manualmente, concatenando o email e a senha diretamente
@@ -255,6 +260,10 @@ try {
         LoginFrame.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void btnLogarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLogarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogarKeyPressed
 
     /**
      * @param args the command line arguments

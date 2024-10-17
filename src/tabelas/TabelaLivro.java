@@ -355,6 +355,9 @@ public class TabelaLivro extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (livro1.isEditing()) {
+                livro1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from livro where Titulo like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);

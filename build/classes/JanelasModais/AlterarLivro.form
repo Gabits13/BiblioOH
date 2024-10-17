@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -52,43 +52,6 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tfCodLivro" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="tfCodSetor" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="tfAutor" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfTitulo" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="tfDataLancamento" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Component id="tfQtdePag" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tfGenero" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="tfExemplares" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
@@ -110,6 +73,41 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                           <Component id="tfIsbn" min="-2" pref="140" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="tfCodLivro" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="tfCodSetor" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="tfAutor" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfTitulo" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfQtdePag" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfDataLancamento" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfGenero" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="tfExemplares" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -155,8 +153,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tfDataLancamento" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfGenero" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfDataLancamento" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -200,45 +198,29 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tfCodLivro">
           <Properties>
-            <Property name="text" type="java.lang.String" value="123"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfTitulo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="TituloAlgo"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfAutor">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="AutorAlgu&#xe9;m"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfDataLancamento">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="05/06/2009"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfAutorActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="tfGenero">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Terror"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfQtdePag">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="500"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfEditora">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Editora Algo"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfEditoraActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="tfIsbn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="12345678912345678"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfIsbnActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfIsbnKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -328,9 +310,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="tfCodSetor">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="123"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -348,10 +327,14 @@
             <Property name="text" type="java.lang.String" value="Exemplares"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfExemplares">
+        <Component class="javax.swing.JFormattedTextField" name="tfDataLancamento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="200"/>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="####-##-##" subtype="-1" type="5"/>
+            </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfExemplares">
         </Component>
       </SubComponents>
     </Container>

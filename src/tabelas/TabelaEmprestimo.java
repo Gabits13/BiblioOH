@@ -5,6 +5,7 @@
 package tabelas;
 
 import JanelasModais.AlterarEmprestimo;
+import JanelasModais.MultaTeste;
 import JanelasModais.NovoRegistroEmprestimo;
 import conexao.Conexao;
 import java.awt.Color;
@@ -75,7 +76,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
             //
             try {
                 if (idUsuario.equals("") == false) {
-                    sql = "update empresta_livro set Data_Emissao='" + emissao + "',Data_Devolucao='" + devolucao + "' where Id_Usuario = " + idUsuario;
+                    sql = "update empresta_livro set Data_Emissao='" + emissao + "',Data_Devolucao='" + devolucao + "' where Id_Usuario = " + idUsuario + " and Cod_Livro = " + codLivro;
                     msg = "Alteração de registro";
                     con_cliente.statement.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
@@ -91,6 +92,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         @Override
         public void Deletar(int row, int column) {
             idUsuario = emprestimo1.getValueAt(row, 0).toString();
+            codLivro = emprestimo1.getValueAt(row, 1).toString();
             String sql="";
             if (emprestimo1.isEditing()) {
                 emprestimo1.getCellEditor().stopCellEditing();
@@ -100,7 +102,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                 Object [] botoes = {"Sim","Não"};
                 opcao = JOptionPane.showOptionDialog(null, "Deseja excluir o registro: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);
                 if(opcao==JOptionPane.YES_OPTION){
-                    sql = "delete from empresta_livro where Id_Usuario = " + idUsuario;
+                    sql = "delete from empresta_livro where Id_Usuario = " + idUsuario + " and Cod_Livro = " + codLivro;
                     int excluir = con_cliente.statement.executeUpdate(sql);
                     if (excluir==1){
                         JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
@@ -108,7 +110,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                         preencherTabela();
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Erro ao delatar", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             } catch (Exception excecao) {
@@ -219,6 +221,11 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         });
 
         btnProximo.setText("Próximo");
+        btnProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximoActionPerformed(evt);
+            }
+        });
 
         btnAnterior.setText("Anterior");
 
@@ -308,6 +315,9 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (emprestimo1.isEditing()) {
+                emprestimo1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from empresta_livro where Data_Devolucao like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);
@@ -322,6 +332,13 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "\n Os dados digitados não foram localizados!! :\n" + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnPesquisaActionPerformed
+
+    private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
+        // TODO add your handling code here:
+        String devolucaoTeste = "2024/9/16";
+        MultaTeste multa = new MultaTeste(null, true, devolucaoTeste);
+        multa.setVisible(true);
+    }//GEN-LAST:event_btnProximoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
