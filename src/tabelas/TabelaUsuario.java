@@ -5,7 +5,7 @@
 package tabelas;
 
 import JanelasModais.AlterarUsuario;
-import JanelasModais.MultaTeste;
+import JanelasModais.Multa;
 import JanelasModais.NovoRegistroUsuario;
 import conexao.Conexao;
 import java.awt.Color;
@@ -139,6 +139,18 @@ public class TabelaUsuario extends javax.swing.JPanel {
         }
     };
     
+    
+    public String Multar(String id) {
+        for (int cont = 0; cont < usuario1.getRowCount(); cont++) {
+            String idComparativo = usuario1.getValueAt(cont, 0).toString();
+            if (idComparativo.equals(id)) {
+                String nomeMulta = usuario1.getValueAt(cont, 1).toString();
+                return nomeMulta;
+            }
+        }
+        return null;
+    }
+    
     private void preencherTabela() {
         usuario1.getColumnModel().getColumn(0);
         usuario1.getColumnModel().getColumn(1);
@@ -221,12 +233,18 @@ public class TabelaUsuario extends javax.swing.JPanel {
         usuario1.setSelectionBackground(new java.awt.Color(0, 102, 102));
         jScrollPane1.setViewportView(usuario1);
         if (usuario1.getColumnModel().getColumnCount() > 0) {
-            usuario1.getColumnModel().getColumn(0).setPreferredWidth(50);
-            usuario1.getColumnModel().getColumn(1).setPreferredWidth(140);
+            usuario1.getColumnModel().getColumn(0).setHeaderValue("Id_Usuario");
             usuario1.getColumnModel().getColumn(2).setPreferredWidth(70);
+            usuario1.getColumnModel().getColumn(2).setHeaderValue("Endereco");
             usuario1.getColumnModel().getColumn(3).setPreferredWidth(100);
+            usuario1.getColumnModel().getColumn(3).setHeaderValue("RG");
+            usuario1.getColumnModel().getColumn(4).setHeaderValue("CPF");
             usuario1.getColumnModel().getColumn(5).setPreferredWidth(90);
+            usuario1.getColumnModel().getColumn(5).setHeaderValue("Telefone");
+            usuario1.getColumnModel().getColumn(6).setHeaderValue("Email");
+            usuario1.getColumnModel().getColumn(7).setHeaderValue("Senha");
             usuario1.getColumnModel().getColumn(8).setPreferredWidth(110);
+            usuario1.getColumnModel().getColumn(8).setHeaderValue("Ação");
         }
 
         btnNovoRegistro.setText("Novo Registro");
@@ -280,7 +298,7 @@ public class TabelaUsuario extends javax.swing.JPanel {
                         .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(btnProximo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnterior)
