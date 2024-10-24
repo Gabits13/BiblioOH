@@ -130,6 +130,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         listaMultas = "";
         for (int cont = 0; cont < emprestimo1.getRowCount(); cont++) {
             String idUsu = emprestimo1.getValueAt(cont, 0).toString();
+            String codLi = emprestimo1.getValueAt(cont, 1).toString();
             String dataDevolucao = emprestimo1.getValueAt(cont, 3).toString();
             
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -147,8 +148,10 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
             
             if (diferenca > 0) {
                 TabelaUsuario usuario = new TabelaUsuario();
+                TabelaLivro livro = new TabelaLivro();
                 String multado = usuario.Multar(idUsu);
-                listaMultas = " " + multado + " deve pagar: R$" + multa + "\n" + listaMultas;
+                String livroMultado = livro.Multar(codLi);
+                listaMultas = " " + multado + " deve pagar: R$" + multa + " Pelo livro: "+ livroMultado + "\n" + listaMultas;
             }
         }
     }

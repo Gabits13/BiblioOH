@@ -29,25 +29,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="140" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnNovoRegistro" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="barraPesquisa" min="-2" pref="179" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPesquisa" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="131" max="32767" attributes="0"/>
-                      <Component id="btnProximo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAnterior" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPrimeiro" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnUltimo" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnNovoRegistro" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="barraPesquisa" min="-2" pref="179" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnPesquisa" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="441" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -64,10 +58,6 @@
                   <Component id="btnNovoRegistro" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="barraPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnProximo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPrimeiro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnUltimo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -155,29 +145,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnProximo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pr&#xf3;ximo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAnterior">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Anterior"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPrimeiro">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Primeiro"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnUltimo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ultimo"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Genero"/>
+        <Property name="text" type="java.lang.String" value="Genero:"/>
       </Properties>
     </Component>
   </SubComponents>

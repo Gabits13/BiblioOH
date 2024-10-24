@@ -145,10 +145,6 @@ public class TabelaAdministrador extends javax.swing.JPanel {
         btnNovoRegistro = new javax.swing.JButton();
         barraPesquisa = new javax.swing.JTextField();
         btnPesquisa = new javax.swing.JButton();
-        btnProximo = new javax.swing.JButton();
-        btnAnterior = new javax.swing.JButton();
-        btnPrimeiro = new javax.swing.JButton();
-        btnUltimo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -203,15 +199,7 @@ public class TabelaAdministrador extends javax.swing.JPanel {
             }
         });
 
-        btnProximo.setText("Próximo");
-
-        btnAnterior.setText("Anterior");
-
-        btnPrimeiro.setText("Primeiro");
-
-        btnUltimo.setText("Ultimo");
-
-        jLabel2.setText("ID");
+        jLabel2.setText("ID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -220,25 +208,18 @@ public class TabelaAdministrador extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNovoRegistro)
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                        .addComponent(btnProximo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAnterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPrimeiro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUltimo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnNovoRegistro)
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPesquisa))
+                            .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -252,14 +233,10 @@ public class TabelaAdministrador extends javax.swing.JPanel {
                     .addComponent(btnNovoRegistro)
                     .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisa)
-                    .addComponent(btnProximo)
-                    .addComponent(btnAnterior)
-                    .addComponent(btnPrimeiro)
-                    .addComponent(btnUltimo)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -313,12 +290,8 @@ public class TabelaAdministrador extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private tabelas.Tabela administrador1;
     private javax.swing.JTextField barraPesquisa;
-    private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnNovoRegistro;
     private javax.swing.JButton btnPesquisa;
-    private javax.swing.JButton btnPrimeiro;
-    private javax.swing.JButton btnProximo;
-    private javax.swing.JButton btnUltimo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
