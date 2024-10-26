@@ -4,6 +4,8 @@
  */
 package JanelasModais;
 
+import tabelas.TabelaSetor;
+
 /**
  *
  * @author Guilherme
@@ -27,6 +29,11 @@ public class AlterarLivro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        TabelaSetor setor = new TabelaSetor();
+        for (String cod : setor.getListaCod()) {
+            cbCodSetor.addItem(cod);
+        }
+        
         tfCodLivro.setText(codLivro);
         tfTitulo.setText(titulo);
         tfAutor.setText(autor);
@@ -36,7 +43,7 @@ public class AlterarLivro extends javax.swing.JDialog {
         tfExemplares.setText(exemplares);
         tfEditora.setText(editora);
         tfIsbn.setText(isbn);
-        tfCodSetor.setText(codSetor);
+        cbCodSetor.setSelectedItem((String) codSetor);
     }
 
     public String getCodLivro() {
@@ -108,11 +115,11 @@ public class AlterarLivro extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        tfCodSetor = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         tfDataLancamento = new javax.swing.JFormattedTextField();
         tfExemplares = new javax.swing.JTextField();
+        cbCodSetor = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -235,10 +242,10 @@ public class AlterarLivro extends javax.swing.JDialog {
                                         .addComponent(tfCodLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel2))
                                     .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(tfCodSetor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addGap(141, 141, 141))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel10)
+                                        .addComponent(cbCodSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(132, 132, 132))
                                 .addComponent(tfAutor, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(tfTitulo, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -266,11 +273,12 @@ public class AlterarLivro extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfCodLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfCodLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbCodSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfCodSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(28, 28, 28)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -347,7 +355,7 @@ public class AlterarLivro extends javax.swing.JDialog {
         this.exemplares = tfExemplares.getText();
         this.editora = tfEditora.getText();
         this.isbn = tfIsbn.getText();
-        this.codSetor = tfCodSetor.getText();
+        this.codSetor = (String) cbCodSetor.getSelectedItem();
         this.dispose();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
@@ -412,6 +420,7 @@ public class AlterarLivro extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JComboBox<String> cbCodSetor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -426,7 +435,6 @@ public class AlterarLivro extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tfAutor;
     private javax.swing.JTextField tfCodLivro;
-    private javax.swing.JTextField tfCodSetor;
     private javax.swing.JFormattedTextField tfDataLancamento;
     private javax.swing.JTextField tfEditora;
     private javax.swing.JTextField tfExemplares;

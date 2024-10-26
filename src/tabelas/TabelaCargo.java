@@ -27,6 +27,7 @@ public class TabelaCargo extends javax.swing.JPanel {
     String descricao = "";
     String nome = "";
     String salario = "";
+    String [] listaCod;
     Conexao con_cliente;
     public TabelaCargo() {
         initComponents();
@@ -41,6 +42,8 @@ public class TabelaCargo extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from cargo order by Cod_Cargo");
         preencherTabela();
+        listaCod = new String [cargo1.getRowCount()];
+        setListaCod(ListarCod(listaCod));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -116,6 +119,21 @@ public class TabelaCargo extends javax.swing.JPanel {
             }
         }
     };
+    
+    public String[] ListarCod (String cod[]) {
+        for (int cont = 0; cont < cargo1.getRowCount(); cont++) {
+            cod[cont] = cargo1.getValueAt(cont, 0).toString();
+        }
+        return cod;
+    }
+
+    public String[] getListaCod() {
+        return listaCod;
+    }
+
+    public void setListaCod(String[] listaCod) {
+        this.listaCod = listaCod;
+    }
     
     private void preencherTabela() {
         

@@ -33,6 +33,7 @@ public class TabelaLivro extends javax.swing.JPanel {
     String editora = "";
     String isbn = "";
     String codSetor = "";
+    String [] listaCod;
     Conexao con_cliente;
     public TabelaLivro() {
         initComponents();
@@ -47,6 +48,8 @@ public class TabelaLivro extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from livro order by Cod_Livro");
         preencherTabela();
+        listaCod = new String [livro1.getRowCount()];
+        setListaCod(ListarCod(listaCod));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -157,6 +160,23 @@ public class TabelaLivro extends javax.swing.JPanel {
         }
         return null;
     }
+    
+    public String[] ListarCod (String cod[]) {
+        for (int cont = 0; cont < livro1.getRowCount(); cont++) {
+            cod[cont] = livro1.getValueAt(cont, 0).toString();
+        }
+        return cod;
+    }
+
+    public String[] getListaCod() {
+        return listaCod;
+    }
+
+    public void setListaCod(String[] listaCod) {
+        this.listaCod = listaCod;
+    }
+    
+    
     
     private void preencherTabela() {
         livro1.getColumnModel().getColumn(0);

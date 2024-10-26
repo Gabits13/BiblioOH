@@ -26,6 +26,7 @@ public class TabelaSetor extends javax.swing.JPanel {
     String codSetor = "";
     String andar = "";
     String genero = "";
+    String [] listaCod;
     Conexao con_cliente;
     public TabelaSetor() {
         initComponents();
@@ -40,6 +41,8 @@ public class TabelaSetor extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from setor order by Cod_Setor");
         preencherTabela();
+        listaCod = new String [setor1.getRowCount()];
+        setListaCod(ListarCod(listaCod));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -111,6 +114,23 @@ public class TabelaSetor extends javax.swing.JPanel {
             }
         }
     };
+    
+    public String[] ListarCod (String cod[]) {
+        for (int cont = 0; cont < setor1.getRowCount(); cont++) {
+            cod[cont] = setor1.getValueAt(cont, 0).toString();
+        }
+        return cod;
+    }
+
+    public String[] getListaCod() {
+        return listaCod;
+    }
+
+    public void setListaCod(String[] listaCod) {
+        this.listaCod = listaCod;
+    }
+    
+    
     
     private void preencherTabela() {
         

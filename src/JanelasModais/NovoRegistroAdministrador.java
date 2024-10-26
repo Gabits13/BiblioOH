@@ -5,6 +5,7 @@
 package JanelasModais;
 
 import javax.swing.ImageIcon;
+import tabelas.TabelaFuncionario;
 
 /**
  *
@@ -22,6 +23,11 @@ public class NovoRegistroAdministrador extends javax.swing.JDialog {
         initComponents();
         ImageIcon icone = new ImageIcon("src/img/logoicon.png");
         setIconImage(icone.getImage());
+        
+        TabelaFuncionario funcionario = new TabelaFuncionario();
+        for (String id : funcionario.getListaId()) {
+            cbIdFuncionario.addItem(id);
+        }
     }
 
     public String getIdFuncionario() {
@@ -43,12 +49,12 @@ public class NovoRegistroAdministrador extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        tfIdFuncionario = new javax.swing.JTextField();
         tfSenha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnGravar = new javax.swing.JButton();
+        cbIdFuncionario = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,17 +93,6 @@ public class NovoRegistroAdministrador extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(157, 157, 157)
-                                .addComponent(btnGravar)
-                                .addGap(32, 32, 32)
-                                .addComponent(btnVoltar))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfIdFuncionario, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addContainerGap(187, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -107,7 +102,17 @@ public class NovoRegistroAdministrador extends javax.swing.JDialog {
                                     .addComponent(jLabel4)
                                     .addComponent(tfSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                                 .addGap(210, 210, 210)))
-                        .addContainerGap(122, Short.MAX_VALUE))))
+                        .addContainerGap(122, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(157, 157, 157)
+                                .addComponent(btnGravar)
+                                .addGap(32, 32, 32)
+                                .addComponent(btnVoltar))
+                            .addComponent(jLabel2)
+                            .addComponent(cbIdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,8 +122,8 @@ public class NovoRegistroAdministrador extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfIdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbIdFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +131,7 @@ public class NovoRegistroAdministrador extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnGravar))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,7 +156,7 @@ public class NovoRegistroAdministrador extends javax.swing.JDialog {
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
         // TODO add your handling code here:
-        this.idFuncionario = tfIdFuncionario.getText();
+        this.idFuncionario = (String) cbIdFuncionario.getSelectedItem();
         this.senha = tfSenha.getText();
         this.dispose();
     }//GEN-LAST:event_btnGravarActionPerformed
@@ -264,11 +269,11 @@ public class NovoRegistroAdministrador extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGravar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JComboBox<String> cbIdFuncionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tfIdFuncionario;
     private javax.swing.JTextField tfSenha;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,6 +34,7 @@ public class TabelaFuncionario extends javax.swing.JPanel {
     String email = "";
     String codPeriodo = "";
     String codCargo = "";
+    String [] listaId;
     Conexao con_cliente;
     public TabelaFuncionario() {
         initComponents();
@@ -48,6 +49,8 @@ public class TabelaFuncionario extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from funcionario order by Id_Funcionario");
         preencherTabela();
+        listaId = new String[funcionario1.getRowCount()];
+        setListaId(ListarId(listaId));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -151,6 +154,21 @@ public class TabelaFuncionario extends javax.swing.JPanel {
             }
         }
     };
+    
+    public String[] ListarId (String id[]) {
+        for (int cont = 0; cont < funcionario1.getRowCount(); cont++) {
+            id[cont] = funcionario1.getValueAt(cont, 0).toString();
+        }
+        return id;
+    }
+
+    public String[] getListaId() {
+        return listaId;
+    }
+
+    public void setListaId(String[] listaId) {
+        this.listaId = listaId;
+    }
     
     private void preencherTabela() {
         funcionario1.getColumnModel().getColumn(0);

@@ -9,7 +9,9 @@ import JanelasModais.Multa;
 import JanelasModais.NovoRegistroUsuario;
 import conexao.Conexao;
 import java.awt.Color;
+import java.awt.List;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -32,13 +34,14 @@ public class TabelaUsuario extends javax.swing.JPanel {
     String telefone = "";
     String email = "";
     String senha = "";
+    String [] listaId;
     Conexao con_cliente;
     public TabelaUsuario() {
         initComponents();
         
         con_cliente = new Conexao(); // inicialização do objeto
         con_cliente.conecta(); // chama o método que conecta
-        
+         
         usuario1.setShowHorizontalLines(true);
         usuario1.setGridColor(new Color(230, 230, 230));
         usuario1.setRowHeight(40);
@@ -46,6 +49,8 @@ public class TabelaUsuario extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from usuario order by Id_Usuario");
         preencherTabela();
+        listaId = new String[usuario1.getRowCount()];
+        setListaId(ListarId(listaId));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -151,6 +156,24 @@ public class TabelaUsuario extends javax.swing.JPanel {
         return null;
     }
     
+    
+    public String[] ListarId (String id[]) {
+        for (int cont = 0; cont < usuario1.getRowCount(); cont++) {
+            id[cont] = usuario1.getValueAt(cont, 0).toString();
+        }
+        return id;
+    }
+
+    public String[] getListaId() {
+        return listaId;
+    }
+
+    public void setListaId(String[] listaId) {
+        this.listaId = listaId;
+    }
+    
+    
+  
     private void preencherTabela() {
         usuario1.getColumnModel().getColumn(0);
         usuario1.getColumnModel().getColumn(1);

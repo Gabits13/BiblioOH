@@ -27,6 +27,7 @@ public class TabelaPeriodo extends javax.swing.JPanel {
     String descricao = "";
     String entrada = "";
     String saida = "";
+    String [] listaCod;
     Conexao con_cliente;
     public TabelaPeriodo() {
         initComponents();
@@ -41,6 +42,8 @@ public class TabelaPeriodo extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from periodo order by Cod_Periodo");
         preencherTabela();
+        listaCod = new String [periodo1.getRowCount()];
+        setListaCod(ListarCod(listaCod));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -116,6 +119,21 @@ public class TabelaPeriodo extends javax.swing.JPanel {
             }
         }
     };
+    
+    public String[] ListarCod (String cod[]) {
+        for (int cont = 0; cont < periodo1.getRowCount(); cont++) {
+            cod[cont] = periodo1.getValueAt(cont, 0).toString();
+        }
+        return cod;
+    }
+
+    public String[] getListaCod() {
+        return listaCod;
+    }
+
+    public void setListaCod(String[] listaCod) {
+        this.listaCod = listaCod;
+    }
     
     private void preencherTabela() {
         
