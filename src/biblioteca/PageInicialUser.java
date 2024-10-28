@@ -21,28 +21,24 @@ public class PageInicialUser extends javax.swing.JFrame {
          Conexao con_cliente;
     
    private DrawerController drawer;
-    public PageInicialUser() {
+    public PageInicialUser(Usuario u) {
         
 
          
         initComponents();
+        ImageIcon icone = new ImageIcon("src/img/logo3.jfif");
+        setIconImage(icone.getImage());
+        
         drawer=Drawer.newDrawer(this)
-                .header(new Header())
+                .header(new Header(u))
                 .background(new Color(255,255,255))
                 .backgroundTransparent(0.0f)
                 .drawerBackground(new Color(48,145,144))
                 .drawerWidth(300)
                 .closeOnPress(false)
                 .addChild(home)
-                .addChild(meuperfil)
-                .addChild(usuarios)
                 .addChild(livro)
-                .addChild(funcionario)
-                .addChild(adLivro)
                 .addChild(emprestimos)
-                .addChild(cargos)
-                .addChild(periodo)
-                .addChild(setores)
                 
               
                 
@@ -50,7 +46,7 @@ public class PageInicialUser extends javax.swing.JFrame {
                 .addFooter(sair)
                 
                 .build();  
-        
+         drawer.show();
         
     }
 
@@ -71,15 +67,15 @@ public class PageInicialUser extends javax.swing.JFrame {
         sobrenos = new javax.swing.JButton();
         cargos = new javax.swing.JButton();
         home = new javax.swing.JButton();
-        meuperfil = new javax.swing.JButton();
+        contaAdm = new javax.swing.JButton();
         emprestimos = new javax.swing.JButton();
         adLivro = new javax.swing.JButton();
         setores = new javax.swing.JButton();
         sair = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        imgHome = new javax.swing.JLabel();
 
         periodo.setBackground(new java.awt.Color(48, 145, 144));
         periodo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -108,6 +104,7 @@ public class PageInicialUser extends javax.swing.JFrame {
         livro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adlivroheader.png"))); // NOI18N
         livro.setText("Livro");
         livro.setAlignmentY(2.0F);
+        livro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         livro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         livro.setName("livro"); // NOI18N
         livro.addActionListener(new java.awt.event.ActionListener() {
@@ -171,14 +168,14 @@ public class PageInicialUser extends javax.swing.JFrame {
             }
         });
 
-        meuperfil.setBackground(new java.awt.Color(48, 145, 144));
-        meuperfil.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        meuperfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perfilheader.png"))); // NOI18N
-        meuperfil.setText("Meu Perfil");
-        meuperfil.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        meuperfil.addActionListener(new java.awt.event.ActionListener() {
+        contaAdm.setBackground(new java.awt.Color(48, 145, 144));
+        contaAdm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contaAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perfilheader.png"))); // NOI18N
+        contaAdm.setText("Meu Perfil");
+        contaAdm.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        contaAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                meuperfilActionPerformed(evt);
+                contaAdmActionPerformed(evt);
             }
         });
 
@@ -186,6 +183,7 @@ public class PageInicialUser extends javax.swing.JFrame {
         emprestimos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         emprestimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/emprestimoheader.png"))); // NOI18N
         emprestimos.setText("Empréstimos");
+        emprestimos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         emprestimos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emprestimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,6 +206,7 @@ public class PageInicialUser extends javax.swing.JFrame {
         setores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         setores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/setorheader.png"))); // NOI18N
         setores.setText("Setores");
+        setores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         setores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,6 +218,7 @@ public class PageInicialUser extends javax.swing.JFrame {
         sair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairheader.png"))); // NOI18N
         sair.setText("Sair");
+        sair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sair.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,20 +232,10 @@ public class PageInicialUser extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1200, 900));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(48, 145, 144));
         jPanel1.setToolTipText("");
 
         jPanel2.setBackground(new java.awt.Color(48, 145, 144));
-
-        menu.setBackground(new java.awt.Color(48, 145, 144));
-        menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menuhamburguer.png"))); // NOI18N
-        menu.setBorder(null);
-        menu.setBorderPainted(false);
-        menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuActionPerformed(evt);
-            }
-        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoheader.png"))); // NOI18N
 
@@ -253,32 +243,35 @@ public class PageInicialUser extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(menu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 491, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(537, 537, 537))
+                .addGap(392, 392, 392))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1))
-            .addComponent(menu)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blibiotecaimg.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 301, Short.MAX_VALUE)
+                .addComponent(imgHome))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 580, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imgHome))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -293,17 +286,8 @@ public class PageInicialUser extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        // TODO add your handling code here:
-        if(drawer.isShow()){
-            drawer.hide();
-        
-        }else{
-            drawer.show();
-        }
-    }//GEN-LAST:event_menuActionPerformed
 
     private void periodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoActionPerformed
         // TODO add your handling code here:
@@ -337,9 +321,9 @@ public class PageInicialUser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_homeActionPerformed
 
-    private void meuperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meuperfilActionPerformed
+    private void contaAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contaAdmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_meuperfilActionPerformed
+    }//GEN-LAST:event_contaAdmActionPerformed
 
     private void emprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimosActionPerformed
         // TODO add your handling code here:
@@ -364,33 +348,33 @@ public class PageInicialUser extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
     
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 PageInicialUser PageInicialFrame = new PageInicialUser();
-                 PageInicialFrame.setVisible(true);
-                 PageInicialFrame.pack();
-                 PageInicialFrame.setLocationRelativeTo(null);
-            }
-        });
-    }
+    
+    /* Create and display the form 
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            PageInicialUser PageInicialFrame = new PageInicialUser();
+            PageInicialFrame.setVisible(true);
+            PageInicialFrame.pack();
+            PageInicialFrame.setLocationRelativeTo(null);
+        }
+});
+}*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adLivro;
     private javax.swing.JButton cargos;
+    private javax.swing.JButton contaAdm;
     private javax.swing.JButton emprestimos;
     private javax.swing.JButton emprestimos2;
     private javax.swing.JButton funcionario;
     private javax.swing.JButton home;
+    private javax.swing.JLabel imgHome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton livro;
-    private javax.swing.JButton menu;
-    private javax.swing.JButton meuperfil;
     private javax.swing.JButton periodo;
     private javax.swing.JButton sair;
     private javax.swing.JButton setores;

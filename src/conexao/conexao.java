@@ -9,12 +9,16 @@ package conexao;
 import javax.swing.JOptionPane;
 import java.sql.*; // para execução de comandos SQL no ambiente Java
 
-public class Conexao {
+/**
+ *
+ * @author Gabriel Santos
+ */
+public class Conexao{
     final private String driver = "com.mysql.cj.jdbc.Driver"; // definição do driver MySQL para acesso aos dados
     final private String url = "jdbc:mysql://localhost/bd_biblioteca"; // acesso ao bd "clientes" no servidor (myAdmin)
     final private String usuario = "root"; // usuário do MySQL
     final private String senha = ""; // senha do MySQL
-    private Connection conexao; // variável que armazenará a conexão aberta
+    public Connection conexao; // variável que armazenará a conexão aberta
     public Statement statement; // variável para execução dos comandos SQL dentro do ambiente Java
     public ResultSet resultset; // variável que armazenará o resultado da execução de um comando SQL
 
@@ -45,7 +49,7 @@ public class Conexao {
 
     public void executaSQL(String sql) {
         try {
-            statement = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            statement = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultset = statement.executeQuery(sql);
         } catch (SQLException excecao) {
             JOptionPane.showMessageDialog(null, "Erro na execução do comando SQL:\n " + excecao, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);

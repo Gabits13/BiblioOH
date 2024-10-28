@@ -5,9 +5,14 @@
 package biblioteca;
 
 import conexao.Conexao;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.font.TextAttribute;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.sql.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /**
  *
@@ -16,14 +21,15 @@ import javax.swing.JOptionPane;
 public class LoginAdmin extends javax.swing.JFrame {
     
     Conexao con_cliente;
-
+    Funcionario funcionario = new Funcionario();
   
     public LoginAdmin() {
         initComponents();
             con_cliente = new Conexao(); 
             con_cliente.conecta(); 
     
-        
+        ImageIcon icone = new ImageIcon("src/img/logoicon.png");
+        setIconImage(icone.getImage());
         
     }
 
@@ -43,7 +49,6 @@ public class LoginAdmin extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnLogar = new javax.swing.JButton();
         Direita = new javax.swing.JPanel();
@@ -99,25 +104,27 @@ public class LoginAdmin extends javax.swing.JFrame {
         Esquerda.add(jLabel3);
         jLabel3.setBounds(30, 120, 60, 20);
 
-        jButton2.setBackground(new java.awt.Color(58, 174, 173));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("Entre aqui!");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("É Usuário? Entre aqui!");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
             }
         });
-        Esquerda.add(jButton2);
-        jButton2.setBounds(90, 450, 130, 20);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("É Usuário? ");
         Esquerda.add(jLabel4);
-        jLabel4.setBounds(20, 450, 80, 20);
+        jLabel4.setBounds(120, 390, 190, 25);
 
         btnLogar.setBackground(new java.awt.Color(58, 174, 173));
         btnLogar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLogar.setText("Login");
+        btnLogar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogar.setName("btnLogar"); // NOI18N
         btnLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +160,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         );
 
         JPanel1.add(Direita);
-        Direita.setBounds(420, 0, 1668, 500);
+        Direita.setBounds(420, 0, 1669, 500);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
 
@@ -184,27 +191,18 @@ public class LoginAdmin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Login LoginFrame = new Login();
-        LoginFrame.setVisible(true);
-        LoginFrame.pack();
-        LoginFrame.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
-
-                          
+                   
 
 try {
-    // Monta a query manualmente, concatenando o email e a senha diretamente
+   // Monta a query manualmente, concatenando o email e a senha diretamente
     String pesquisa = "SELECT f.* FROM funcionario f "
                     + "INNER JOIN conta_administrador c ON f.Id_Funcionario = c.Id_Funcionario "
                     + "WHERE f.Email = '" + txtUsuario.getText() + "' "
@@ -216,10 +214,30 @@ try {
     // Verifica se houve resultado
     if (con_cliente.resultset.first()) {
         
-       
+       try{
+            con_cliente.executaSQL("select * from funcionario where Email like '" + txtUsuario.getText() + "'");
+            con_cliente.resultset.next();
+
+            funcionario.setId(con_cliente.resultset.getString("Id_Funcionario"));
+            funcionario.setNome(con_cliente.resultset.getString("Nome"));
+            funcionario.setRg(con_cliente.resultset.getString("RG"));
+            funcionario.setCpf(con_cliente.resultset.getString("CPF"));
+            funcionario.setDataNasc(con_cliente.resultset.getString("Data_Nasc"));
+            funcionario.setDataAdmissao(con_cliente.resultset.getString("Data_Admissao"));
+            funcionario.setEndereco(con_cliente.resultset.getString("Endereco"));
+            funcionario.setTelefone(con_cliente.resultset.getString("Telefone"));
+            funcionario.setEmail(con_cliente.resultset.getString("Email"));
+            funcionario.setCodPeriodo(con_cliente.resultset.getString("Cod_Periodo"));
+            funcionario.setCodCargo(con_cliente.resultset.getString("Cod_Cargo"));
+            
+        } 
+        catch (SQLException erroSql) {
+            // Exibe mensagem de erro caso haja exceção de SQL
+            JOptionPane.showMessageDialog(null, "Erro ao Listar os dados!\n" + erroSql, "Mensagem do Programa", JOptionPane.ERROR_MESSAGE);
+        }
         // Acesso permitido: abre a tela do administrador
-        PageInicialAdmin mostra = new PageInicialAdmin();
-        mostra.setVisible(true);
+        PageInicialAdm mostra = new PageInicialAdm(funcionario);
+        mostra.setVisible(true);    
         dispose(); // Fecha a janela de login
     } else {
         // Caso não encontre o usuário ou a senha estejam errados
@@ -231,6 +249,7 @@ try {
 }
 
 
+
      
 
     }//GEN-LAST:event_btnLogarActionPerformed
@@ -238,6 +257,27 @@ try {
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        Font font = jLabel4.getFont();
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        jLabel4.setFont(font.deriveFont(attributes));
+        jLabel4.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+        jLabel4.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        jLabel4.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        Login LoginFrame = new Login();
+        LoginFrame.setVisible(true);
+        LoginFrame.pack();
+        LoginFrame.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -249,7 +289,6 @@ try {
     private javax.swing.JPanel Esquerda;
     private javax.swing.JPanel JPanel1;
     private javax.swing.JButton btnLogar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
