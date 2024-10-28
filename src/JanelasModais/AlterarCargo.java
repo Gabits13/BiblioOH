@@ -77,13 +77,19 @@ public class AlterarCargo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Alterar Cargo");
 
-        tfCodCargo.setText("123");
+        tfCodCargo.setEnabled(false);
 
-        tfDescricao.setText("123");
+        tfNomeCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomeCargoActionPerformed(evt);
+            }
+        });
 
-        tfNomeCargo.setText("05/06/2020");
-
-        tfSalario.setText("12/06/2020");
+        tfSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSalarioActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Cod Cargo");
@@ -139,7 +145,7 @@ public class AlterarCargo extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
-                                            .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(104, 104, 104))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +204,7 @@ public class AlterarCargo extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -219,6 +225,14 @@ public class AlterarCargo extends javax.swing.JDialog {
         this.salario = tfSalario.getText();
         this.dispose();
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void tfNomeCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNomeCargoActionPerformed
+
+    private void tfSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfSalarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,6 +259,22 @@ public class AlterarCargo extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AlterarCargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

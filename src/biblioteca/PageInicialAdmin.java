@@ -37,13 +37,15 @@ public class PageInicialAdmin extends javax.swing.JFrame {
    TabelaAdministrarLivro tabelaAdministrarLivro = new TabelaAdministrarLivro();
    
     public PageInicialAdmin(Funcionario f) {
+      
+       
         
         initComponents();
         ImageIcon icone = new ImageIcon("src/img/logoicon.png");
         setIconImage(icone.getImage());
 
         drawer=Drawer.newDrawer(this)
-                .header(new Header(f.getNome(), f.getEmail()))
+                .header(new HeaderFunc(f, this))
                 .background(new Color(255,255,255))
                 .backgroundTransparent(0.0f)
                 .drawerBackground(new Color(48,145,144))
@@ -396,14 +398,14 @@ public class PageInicialAdmin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(48, 145, 144));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoheader.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo3.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(711, Short.MAX_VALUE)
+                .addContainerGap(678, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(405, 405, 405))
         );
@@ -427,7 +429,7 @@ public class PageInicialAdmin extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(300, Short.MAX_VALUE)
                 .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(

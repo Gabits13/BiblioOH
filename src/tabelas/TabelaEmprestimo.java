@@ -5,10 +5,15 @@
 package tabelas;
 
 import JanelasModais.AlterarEmprestimo;
+import JanelasModais.Multa;
 import JanelasModais.NovoRegistroEmprestimo;
 import conexao.Conexao;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,6 +32,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
     String codLivro = "";
     String emissao = "";
     String devolucao = "";
+    String listaMultas = "";
     Conexao con_cliente;
     public TabelaEmprestimo() {
         initComponents();
@@ -41,13 +47,15 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from empresta_livro order by Id_Usuario");
         preencherTabela();
+        
     }
-    
+
     FuncoesBtn event = new FuncoesBtn() {
         @Override
         public void Alterar(int row, int column) {
             String sql;
             String msg = "";
+            //System.out.println(emprestimo1.getRowCount());
             for (int i = 0; i < 4; i++) {
                 switch (i) {
                     case 0:
@@ -75,7 +83,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
             //
             try {
                 if (idUsuario.equals("") == false) {
-                    sql = "update empresta_livro set Data_Emissao='" + emissao + "',Data_Devolucao='" + devolucao + "' where Id_Usuario = " + idUsuario;
+                    sql = "update empresta_livro set Data_Emissao='" + emissao + "',Data_Devolucao='" + devolucao + "' where Id_Usuario = " + idUsuario + " and Cod_Livro = " + codLivro;
                     msg = "Alteração de registro";
                     con_cliente.statement.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
@@ -91,6 +99,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         @Override
         public void Deletar(int row, int column) {
             idUsuario = emprestimo1.getValueAt(row, 0).toString();
+            codLivro = emprestimo1.getValueAt(row, 1).toString();
             String sql="";
             if (emprestimo1.isEditing()) {
                 emprestimo1.getCellEditor().stopCellEditing();
@@ -100,7 +109,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                 Object [] botoes = {"Sim","Não"};
                 opcao = JOptionPane.showOptionDialog(null, "Deseja excluir o registro: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);
                 if(opcao==JOptionPane.YES_OPTION){
-                    sql = "delete from empresta_livro where Id_Usuario = " + idUsuario;
+                    sql = "delete from empresta_livro where Id_Usuario = " + idUsuario + " and Cod_Livro = " + codLivro;
                     int excluir = con_cliente.statement.executeUpdate(sql);
                     if (excluir==1){
                         JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
@@ -108,7 +117,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                         preencherTabela();
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Erro ao delatar", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             } catch (Exception excecao) {
@@ -116,6 +125,36 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
             }
         }
     };
+    
+    private void CalculandoMulta() {
+        listaMultas = "";
+        for (int cont = 0; cont < emprestimo1.getRowCount(); cont++) {
+            String idUsu = emprestimo1.getValueAt(cont, 0).toString();
+            String codLi = emprestimo1.getValueAt(cont, 1).toString();
+            String dataDevolucao = emprestimo1.getValueAt(cont, 3).toString();
+            
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            Date dataEmprestimo = null;
+            try {
+                dataEmprestimo = formato.parse(dataDevolucao);
+            } catch (ParseException ex) {
+                Logger.getLogger(TabelaEmprestimo.class.getName()).log(Level.SEVERE, "erro", ex);
+            }
+            Date dataAtual = new Date();    
+
+            long diferencaMs = dataAtual.getTime() - dataEmprestimo.getTime();
+            long diferenca = TimeUnit.DAYS.convert(diferencaMs, TimeUnit.MILLISECONDS);
+            double multa = diferenca * 1.5;
+            
+            if (diferenca > 0) {
+                TabelaUsuario usuario = new TabelaUsuario();
+                TabelaLivro livro = new TabelaLivro();
+                String multado = usuario.Multar(idUsu);
+                String livroMultado = livro.Multar(codLi);
+                listaMultas = " " + multado + " deve pagar: R$" + multa + " Pelo livro: "+ livroMultado + "\n" + listaMultas;
+            }
+        }
+    }
     
     private void preencherTabela() {
         
@@ -142,6 +181,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!!:\n" + erro,"Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
         }
+        CalculandoMulta();
     }
 
     /**
@@ -159,10 +199,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         btnNovoRegistro = new javax.swing.JButton();
         barraPesquisa = new javax.swing.JTextField();
         btnPesquisa = new javax.swing.JButton();
-        btnProximo = new javax.swing.JButton();
-        btnAnterior = new javax.swing.JButton();
-        btnPrimeiro = new javax.swing.JButton();
-        btnUltimo = new javax.swing.JButton();
+        btnAtrasos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -218,13 +255,12 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
             }
         });
 
-        btnProximo.setText("Próximo");
-
-        btnAnterior.setText("Anterior");
-
-        btnPrimeiro.setText("Primeiro");
-
-        btnUltimo.setText("Ultimo");
+        btnAtrasos.setText("Verificar Atrasos");
+        btnAtrasos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasosActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Data de devolução");
 
@@ -247,14 +283,9 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                         .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                        .addComponent(btnProximo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAnterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPrimeiro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUltimo)))
+                        .addGap(136, 136, 136)
+                        .addComponent(btnAtrasos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -267,14 +298,11 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
                     .addComponent(btnNovoRegistro)
                     .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisa)
-                    .addComponent(btnProximo)
-                    .addComponent(btnAnterior)
-                    .addComponent(btnPrimeiro)
-                    .addComponent(btnUltimo)
+                    .addComponent(btnAtrasos)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(237, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -309,7 +337,7 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
         if (emprestimo1.isEditing()) {
-            emprestimo1.getCellEditor().stopCellEditing();
+                emprestimo1.getCellEditor().stopCellEditing();
         }
         try {
                 String pesquisa = "select * from empresta_livro where Data_Devolucao like '" + barraPesquisa.getText() + "%'";
@@ -326,15 +354,18 @@ public class TabelaEmprestimo extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnPesquisaActionPerformed
 
+    private void btnAtrasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasosActionPerformed
+        // TODO add your handling code here:
+        Multa multa = new Multa(null, true, listaMultas);
+        multa.setVisible(true);
+    }//GEN-LAST:event_btnAtrasosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField barraPesquisa;
-    private javax.swing.JButton btnAnterior;
+    private javax.swing.JButton btnAtrasos;
     private javax.swing.JButton btnNovoRegistro;
     private javax.swing.JButton btnPesquisa;
-    private javax.swing.JButton btnPrimeiro;
-    private javax.swing.JButton btnProximo;
-    private javax.swing.JButton btnUltimo;
     private tabelas.Tabela emprestimo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

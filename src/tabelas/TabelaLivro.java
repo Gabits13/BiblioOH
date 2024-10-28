@@ -33,6 +33,7 @@ public class TabelaLivro extends javax.swing.JPanel {
     String editora = "";
     String isbn = "";
     String codSetor = "";
+    String [] listaCod;
     Conexao con_cliente;
     public TabelaLivro() {
         initComponents();
@@ -47,6 +48,8 @@ public class TabelaLivro extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from livro order by Cod_Livro");
         preencherTabela();
+        listaCod = new String [livro1.getRowCount()];
+        setListaCod(ListarCod(listaCod));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -147,6 +150,34 @@ public class TabelaLivro extends javax.swing.JPanel {
         }
     };
     
+    public String Multar(String cod) {
+        for (int cont = 0; cont < livro1.getRowCount(); cont++) {
+            String codComparativo = livro1.getValueAt(cont, 0).toString();
+            if (codComparativo.equals(cod)) {
+                String tituloMulta = livro1.getValueAt(cont, 1).toString();
+                return tituloMulta;
+            }
+        }
+        return null;
+    }
+    
+    public String[] ListarCod (String cod[]) {
+        for (int cont = 0; cont < livro1.getRowCount(); cont++) {
+            cod[cont] = livro1.getValueAt(cont, 0).toString();
+        }
+        return cod;
+    }
+
+    public String[] getListaCod() {
+        return listaCod;
+    }
+
+    public void setListaCod(String[] listaCod) {
+        this.listaCod = listaCod;
+    }
+    
+    
+    
     private void preencherTabela() {
         livro1.getColumnModel().getColumn(0);
         livro1.getColumnModel().getColumn(1);
@@ -200,10 +231,6 @@ public class TabelaLivro extends javax.swing.JPanel {
         btnNovoRegistro = new javax.swing.JButton();
         barraPesquisa = new javax.swing.JTextField();
         btnPesquisa = new javax.swing.JButton();
-        btnProximo = new javax.swing.JButton();
-        btnAnterior = new javax.swing.JButton();
-        btnPrimeiro = new javax.swing.JButton();
-        btnUltimo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -260,14 +287,6 @@ public class TabelaLivro extends javax.swing.JPanel {
             }
         });
 
-        btnProximo.setText("Próximo");
-
-        btnAnterior.setText("Anterior");
-
-        btnPrimeiro.setText("Primeiro");
-
-        btnUltimo.setText("Ultimo");
-
         jLabel2.setText("Titulo:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -277,41 +296,31 @@ public class TabelaLivro extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnNovoRegistro, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnNovoRegistro)
+                                .addGap(116, 116, 116)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPesquisa))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                        .addComponent(btnProximo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAnterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPrimeiro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUltimo)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(56, 56, 56)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovoRegistro)
                     .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisa)
-                    .addComponent(btnProximo)
-                    .addComponent(btnAnterior)
-                    .addComponent(btnPrimeiro)
-                    .addComponent(btnUltimo)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,7 +365,7 @@ public class TabelaLivro extends javax.swing.JPanel {
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
         if (livro1.isEditing()) {
-            livro1.getCellEditor().stopCellEditing();
+                livro1.getCellEditor().stopCellEditing();
         }
         try {
                 String pesquisa = "select * from livro where Titulo like '" + barraPesquisa.getText() + "%'";
@@ -376,12 +385,8 @@ public class TabelaLivro extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField barraPesquisa;
-    private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnNovoRegistro;
     private javax.swing.JButton btnPesquisa;
-    private javax.swing.JButton btnPrimeiro;
-    private javax.swing.JButton btnProximo;
-    private javax.swing.JButton btnUltimo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

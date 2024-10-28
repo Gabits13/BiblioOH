@@ -76,7 +76,7 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="tfDescricao" min="-2" pref="125" max="-2" attributes="0"/>
+                                              <Component id="tfDescricao" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -155,23 +155,20 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tfCodCargo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="123"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfDescricao">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="123"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tfNomeCargo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="05/06/2020"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfNomeCargoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="tfSalario">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="12/06/2020"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfSalarioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

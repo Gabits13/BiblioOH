@@ -2,6 +2,8 @@ package biblioteca;
 
 import conexao.Conexao;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javaswingdev.drawer.Drawer; 
 import javaswingdev.drawer.DrawerController; 
 import javaswingdev.drawer.DrawerItem; 
@@ -19,9 +21,13 @@ import javax.swing.JOptionPane;
 //pagina para usuario ainda nao concluida
 public class PageInicialUser extends javax.swing.JFrame {
          Conexao con_cliente;
+         
+         SobreNos sobreNos = new SobreNos();
+         EmprestimoUser emprestimoUser;
+         LivroUser livroUser = new LivroUser();
     
    private DrawerController drawer;
-    public PageInicialUser() {
+    public PageInicialUser(Usuario u) {
         
 
          
@@ -30,28 +36,48 @@ public class PageInicialUser extends javax.swing.JFrame {
         setIconImage(icone.getImage());
         
         drawer=Drawer.newDrawer(this)
-                .header(new Header("",""))
+                .header(new Header(u, this))
                 .background(new Color(255,255,255))
                 .backgroundTransparent(0.0f)
                 .drawerBackground(new Color(48,145,144))
-                .drawerWidth(300)
+                .drawerWidth(280)
                 .closeOnPress(false)
                 .addChild(home)
+                .addChild(livro)
                 .addChild(emprestimos)
-                .addChild(cargos)
-                .addChild(periodo)
-                .addChild(setores)
                 
               
                 
-                
+                .addFooter(sobrenos)
                 .addFooter(sair)
                 
                 .build();  
+         drawer.show();
         
-        
+         emprestimoUser = new EmprestimoUser(Integer.parseInt(u.getId()));
+         
+         main.add(sobreNos);
+         main.add(emprestimoUser);
+         main.add(livroUser);
+         
+         sobreNos.setVisible(false);
+         emprestimoUser.setVisible(false);
+         livroUser.setVisible(false);
+         
+         // Pequeno código do JPopupMenu.
+        jPanel1.addMouseListener(new MouseAdapter(){
+            public void mouseReleased(MouseEvent e){
+                if(e.isPopupTrigger())
+                    popup.show(e.getComponent(),e.getX(),e.getY()
+                ); 
+            }});  
+        home02.setText("Tela Inicial");
+        livro02.setText("Livros disponiveis");
+        emprestimo02.setText("Meus Emprestimos");
+        sobrenos02.setText("Sobre nós");
+        sair02.setText("Sair");
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,78 +87,36 @@ public class PageInicialUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        periodo = new javax.swing.JButton();
-        usuarios = new javax.swing.JButton();
         livro = new javax.swing.JButton();
-        emprestimos2 = new javax.swing.JButton();
-        funcionario = new javax.swing.JButton();
         sobrenos = new javax.swing.JButton();
-        cargos = new javax.swing.JButton();
         home = new javax.swing.JButton();
-        contaAdm = new javax.swing.JButton();
         emprestimos = new javax.swing.JButton();
-        adLivro = new javax.swing.JButton();
-        setores = new javax.swing.JButton();
         sair = new javax.swing.JButton();
+        popup = new javax.swing.JPopupMenu();
+        home02 = new javax.swing.JMenuItem();
+        livro02 = new javax.swing.JMenuItem();
+        emprestimo02 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        sobrenos02 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        sair02 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-
-        periodo.setBackground(new java.awt.Color(48, 145, 144));
-        periodo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        periodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/periodoheader.png"))); // NOI18N
-        periodo.setText("Período");
-        periodo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        periodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodoActionPerformed(evt);
-            }
-        });
-
-        usuarios.setBackground(new java.awt.Color(48, 145, 144));
-        usuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/userheader.png"))); // NOI18N
-        usuarios.setText("Usuarios");
-        usuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        usuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuariosActionPerformed(evt);
-            }
-        });
+        main = new javax.swing.JLayeredPane();
+        imgHome = new javax.swing.JLabel();
 
         livro.setBackground(new java.awt.Color(48, 145, 144));
         livro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         livro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adlivroheader.png"))); // NOI18N
         livro.setText("Livro");
         livro.setAlignmentY(2.0F);
+        livro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         livro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         livro.setName("livro"); // NOI18N
         livro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 livroActionPerformed(evt);
-            }
-        });
-
-        emprestimos2.setBackground(new java.awt.Color(48, 145, 144));
-        emprestimos2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        emprestimos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/emprestimoheader.png"))); // NOI18N
-        emprestimos2.setText("Empréstimos");
-        emprestimos2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        emprestimos2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emprestimos2ActionPerformed(evt);
-            }
-        });
-
-        funcionario.setBackground(new java.awt.Color(48, 145, 144));
-        funcionario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/funcheader.png"))); // NOI18N
-        funcionario.setText("Funcionário");
-        funcionario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        funcionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                funcionarioActionPerformed(evt);
             }
         });
 
@@ -147,17 +131,6 @@ public class PageInicialUser extends javax.swing.JFrame {
             }
         });
 
-        cargos.setBackground(new java.awt.Color(48, 145, 144));
-        cargos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cargos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cargoheader.png"))); // NOI18N
-        cargos.setText("Cargos");
-        cargos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        cargos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargosActionPerformed(evt);
-            }
-        });
-
         home.setBackground(new java.awt.Color(48, 145, 144));
         home.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/homeheader.png"))); // NOI18N
@@ -169,21 +142,11 @@ public class PageInicialUser extends javax.swing.JFrame {
             }
         });
 
-        contaAdm.setBackground(new java.awt.Color(48, 145, 144));
-        contaAdm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        contaAdm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perfilheader.png"))); // NOI18N
-        contaAdm.setText("Meu Perfil");
-        contaAdm.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        contaAdm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contaAdmActionPerformed(evt);
-            }
-        });
-
         emprestimos.setBackground(new java.awt.Color(48, 145, 144));
         emprestimos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         emprestimos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/emprestimoheader.png"))); // NOI18N
         emprestimos.setText("Empréstimos");
+        emprestimos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         emprestimos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emprestimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,32 +154,11 @@ public class PageInicialUser extends javax.swing.JFrame {
             }
         });
 
-        adLivro.setBackground(new java.awt.Color(48, 145, 144));
-        adLivro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        adLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adlivroheader.png"))); // NOI18N
-        adLivro.setText("Administrar Livro");
-        adLivro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        adLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adLivroActionPerformed(evt);
-            }
-        });
-
-        setores.setBackground(new java.awt.Color(48, 145, 144));
-        setores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        setores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/setorheader.png"))); // NOI18N
-        setores.setText("Setores");
-        setores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        setores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setoresActionPerformed(evt);
-            }
-        });
-
         sair.setBackground(new java.awt.Color(48, 145, 144));
         sair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairheader.png"))); // NOI18N
         sair.setText("Sair");
+        sair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sair.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,139 +166,201 @@ public class PageInicialUser extends javax.swing.JFrame {
             }
         });
 
+        home02.setText("jMenuItem1");
+        home02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                home02ActionPerformed(evt);
+            }
+        });
+        popup.add(home02);
+
+        livro02.setText("jMenuItem2");
+        livro02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                livro02ActionPerformed(evt);
+            }
+        });
+        popup.add(livro02);
+
+        emprestimo02.setText("jMenuItem3");
+        emprestimo02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emprestimo02ActionPerformed(evt);
+            }
+        });
+        popup.add(emprestimo02);
+        popup.add(jSeparator2);
+
+        sobrenos02.setText("jMenuItem4");
+        sobrenos02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sobrenos02ActionPerformed(evt);
+            }
+        });
+        popup.add(sobrenos02);
+        popup.add(jSeparator1);
+
+        sair02.setText("jMenuItem5");
+        sair02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sair02ActionPerformed(evt);
+            }
+        });
+        popup.add(sair02);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Página Inicial");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1200, 830));
+        setMinimumSize(new java.awt.Dimension(1200, 830));
+        setPreferredSize(new java.awt.Dimension(1200, 830));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(48, 145, 144));
         jPanel1.setToolTipText("");
+        jPanel1.setMaximumSize(new java.awt.Dimension(1200, 830));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1200, 830));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 830));
 
         jPanel2.setBackground(new java.awt.Color(48, 145, 144));
 
-        menu.setBackground(new java.awt.Color(48, 145, 144));
-        menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menuhamburguer.png"))); // NOI18N
-        menu.setBorder(null);
-        menu.setBorderPainted(false);
-        menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoheader.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo3.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(menu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 491, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(537, 537, 537))
+                .addGap(392, 392, 392))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1))
-            .addComponent(menu)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        main.setMaximumSize(new java.awt.Dimension(900, 800));
+        main.setMinimumSize(new java.awt.Dimension(900, 800));
+        main.setLayout(new java.awt.CardLayout());
+
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blibiotecaimg.jpg"))); // NOI18N
+        main.add(imgHome, "card2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(104, 301, Short.MAX_VALUE)
+                .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 580, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1201, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        // TODO add your handling code here:
-        if(drawer.isShow()){
-            drawer.hide();
-        
-        }else{
-            drawer.show();
-        }
-    }//GEN-LAST:event_menuActionPerformed
-
-    private void periodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_periodoActionPerformed
-
-    private void usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usuariosActionPerformed
-
     private void livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livroActionPerformed
-
+        livroUser.setVisible(true);
+        
+        imgHome.setVisible(false);
+        sobreNos.setVisible(false);
+        emprestimoUser.setVisible(false);
     }//GEN-LAST:event_livroActionPerformed
 
-    private void emprestimos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimos2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emprestimos2ActionPerformed
-
-    private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
-
-    }//GEN-LAST:event_funcionarioActionPerformed
-
     private void sobrenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenosActionPerformed
-        // TODO add your handling code here:
+        sobreNos.setVisible(true);
+        
+        emprestimoUser.setVisible(false);
+        livroUser.setVisible(false);
+        imgHome.setVisible(false);
     }//GEN-LAST:event_sobrenosActionPerformed
 
-    private void cargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cargosActionPerformed
-
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
-        // TODO add your handling code here:
+        imgHome.setVisible(true);
+        
+        sobreNos.setVisible(false);
+        emprestimoUser.setVisible(false);
+        livroUser.setVisible(false);
     }//GEN-LAST:event_homeActionPerformed
 
-    private void contaAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contaAdmActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contaAdmActionPerformed
-
     private void emprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimosActionPerformed
-        // TODO add your handling code here:
+        emprestimoUser.setVisible(true);
+        
+        imgHome.setVisible(false);
+        sobreNos.setVisible(false);
+        livroUser.setVisible(false);
     }//GEN-LAST:event_emprestimosActionPerformed
-
-    private void adLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adLivroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adLivroActionPerformed
-
-    private void setoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setoresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_setoresActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         int opcao;
-        opcao = JOptionPane.showConfirmDialog(null, "Deseja mesmo fechar a janela", "Sair", JOptionPane.YES_NO_OPTION);
-        if(opcao == JOptionPane.YES_OPTION){
+        Object [] botoes = {"Sim","Não"};
+        opcao = JOptionPane.showOptionDialog(null, "Deseja fechar o programa: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);        if(opcao == JOptionPane.YES_OPTION){
             System.exit(0);
         }
     }//GEN-LAST:event_sairActionPerformed
+
+    private void home02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_home02ActionPerformed
+        imgHome.setVisible(true);
+        
+        sobreNos.setVisible(false);
+        emprestimoUser.setVisible(false);
+        livroUser.setVisible(false);
+    }//GEN-LAST:event_home02ActionPerformed
+
+    private void livro02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livro02ActionPerformed
+        livroUser.setVisible(true);
+        
+        imgHome.setVisible(false);
+        sobreNos.setVisible(false);
+        emprestimoUser.setVisible(false);
+    }//GEN-LAST:event_livro02ActionPerformed
+
+    private void emprestimo02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimo02ActionPerformed
+        emprestimoUser.setVisible(true);
+        
+        imgHome.setVisible(false);
+        sobreNos.setVisible(false);
+        livroUser.setVisible(false);
+    }//GEN-LAST:event_emprestimo02ActionPerformed
+
+    private void sobrenos02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenos02ActionPerformed
+        sobreNos.setVisible(true);
+        
+        emprestimoUser.setVisible(false);
+        livroUser.setVisible(false);
+        imgHome.setVisible(false);
+    }//GEN-LAST:event_sobrenos02ActionPerformed
+
+    private void sair02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sair02ActionPerformed
+        int opcao;
+        Object [] botoes = {"Sim","Não"};
+        opcao = JOptionPane.showOptionDialog(null, "Deseja fechar o programa: ", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, botoes, botoes[0]);        if(opcao == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_sair02ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,22 +380,23 @@ public class PageInicialUser extends javax.swing.JFrame {
 }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton adLivro;
-    private javax.swing.JButton cargos;
-    private javax.swing.JButton contaAdm;
+    private javax.swing.JMenuItem emprestimo02;
     private javax.swing.JButton emprestimos;
-    private javax.swing.JButton emprestimos2;
-    private javax.swing.JButton funcionario;
     private javax.swing.JButton home;
+    private javax.swing.JMenuItem home02;
+    private javax.swing.JLabel imgHome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JButton livro;
-    private javax.swing.JButton menu;
-    private javax.swing.JButton periodo;
+    private javax.swing.JMenuItem livro02;
+    private javax.swing.JLayeredPane main;
+    private javax.swing.JPopupMenu popup;
     private javax.swing.JButton sair;
-    private javax.swing.JButton setores;
+    private javax.swing.JMenuItem sair02;
     private javax.swing.JButton sobrenos;
-    private javax.swing.JButton usuarios;
+    private javax.swing.JMenuItem sobrenos02;
     // End of variables declaration//GEN-END:variables
 }
