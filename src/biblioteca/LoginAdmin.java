@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class LoginAdmin extends javax.swing.JFrame {
     
     Conexao con_cliente;
-
+    Funcionario funcionario = new Funcionario();
   
     public LoginAdmin() {
         initComponents();
@@ -42,6 +42,7 @@ public class LoginAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
         JPanel1 = new javax.swing.JPanel();
         Esquerda = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -53,11 +54,12 @@ public class LoginAdmin extends javax.swing.JFrame {
         btnLogar = new javax.swing.JButton();
         Direita = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN DE ADMIN");
         setResizable(false);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
 
         JPanel1.setBackground(new java.awt.Color(48, 145, 144));
         JPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,6 +108,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("É Usuário? Entre aqui!");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -123,6 +126,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         btnLogar.setBackground(new java.awt.Color(58, 174, 173));
         btnLogar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLogar.setText("Login");
+        btnLogar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogar.setName("btnLogar"); // NOI18N
         btnLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,18 +162,16 @@ public class LoginAdmin extends javax.swing.JFrame {
         );
 
         JPanel1.add(Direita);
-        Direita.setBounds(420, 0, 1668, 500);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
+        Direita.setBounds(420, 0, 1673, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(403, Short.MAX_VALUE)
+                .addContainerGap(419, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+                .addGap(64, 64, 64))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -179,8 +181,9 @@ public class LoginAdmin extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 68, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -189,6 +192,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
@@ -196,11 +200,10 @@ public class LoginAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
-
-                          
+                   
 
 try {
-    // Monta a query manualmente, concatenando o email e a senha diretamente
+   // Monta a query manualmente, concatenando o email e a senha diretamente
     String pesquisa = "SELECT f.* FROM funcionario f "
                     + "INNER JOIN conta_administrador c ON f.Id_Funcionario = c.Id_Funcionario "
                     + "WHERE f.Email = '" + txtUsuario.getText() + "' "
@@ -212,10 +215,30 @@ try {
     // Verifica se houve resultado
     if (con_cliente.resultset.first()) {
         
-       
+       try{
+            con_cliente.executaSQL("select * from funcionario where Email like '" + txtUsuario.getText() + "'");
+            con_cliente.resultset.next();
+
+            funcionario.setId(con_cliente.resultset.getString("Id_Funcionario"));
+            funcionario.setNome(con_cliente.resultset.getString("Nome"));
+            funcionario.setRg(con_cliente.resultset.getString("RG"));
+            funcionario.setCpf(con_cliente.resultset.getString("CPF"));
+            funcionario.setDataNasc(con_cliente.resultset.getString("Data_Nasc"));
+            funcionario.setDataAdmissao(con_cliente.resultset.getString("Data_Admissao"));
+            funcionario.setEndereco(con_cliente.resultset.getString("Endereco"));
+            funcionario.setTelefone(con_cliente.resultset.getString("Telefone"));
+            funcionario.setEmail(con_cliente.resultset.getString("Email"));
+            funcionario.setCodPeriodo(con_cliente.resultset.getString("Cod_Periodo"));
+            funcionario.setCodCargo(con_cliente.resultset.getString("Cod_Cargo"));
+            
+        } 
+        catch (SQLException erroSql) {
+            // Exibe mensagem de erro caso haja exceção de SQL
+            JOptionPane.showMessageDialog(null, "Erro ao Listar os dados!\n" + erroSql, "Mensagem do Programa", JOptionPane.ERROR_MESSAGE);
+        }
         // Acesso permitido: abre a tela do administrador
-        PageInicialAdmin mostra = new PageInicialAdmin();
-        mostra.setVisible(true);
+        PageInicialAdmin mostra = new PageInicialAdmin(funcionario);
+        mostra.setVisible(true);    
         dispose(); // Fecha a janela de login
     } else {
         // Caso não encontre o usuário ou a senha estejam errados
@@ -225,6 +248,7 @@ try {
     // Exibe mensagem de erro caso haja exceção de SQL
     JOptionPane.showMessageDialog(null, "Erro ao acessar os dados!\n" + erroSql, "Mensagem do Programa", JOptionPane.ERROR_MESSAGE);
 }
+
 
 
      

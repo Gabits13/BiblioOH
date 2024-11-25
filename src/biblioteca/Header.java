@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package biblioteca;
 
 /**
@@ -10,13 +6,36 @@ package biblioteca;
  */
 public class Header extends javax.swing.JPanel {
 
+    String nome02;
+    String email02;
+    String[] dados = new String[8];
+    Usuario user;
+    private final PageInicialUser pUser;
+   
     /**
      * Creates new form Header
+     * @param u
+     * @param pUser
      */
-    public Header() {
+    
+    public Header(Usuario u, PageInicialUser pUser) {
+        nome02 = u.getNome();
+        email02 = u.getEmail();
+        
+
         initComponents();
         
-        nome.setText("Usuario");
+        dados[0] = u.getId();
+        dados[1] = u.getEmail();
+        dados[2] = u.getSenha();
+        dados[3] = u.getNome();
+        dados[4] = u.getEndereco();
+        dados[5] = u.getRg();
+        dados[6] = u.getCpf();
+        dados[7] = u.getTelefone();
+       
+        user = u;
+        this.pUser = pUser;
     }
 
     /**
@@ -33,19 +52,42 @@ public class Header extends javax.swing.JPanel {
         email = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(230, 118, 0));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         imageAvatar1.setBorderSize(3);
         imageAvatar1.setBorderSpace(2);
         imageAvatar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/img/perfil.png"))); // NOI18N
+        imageAvatar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imageAvatar1MouseClicked(evt);
+            }
+        });
 
         nome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nome.setText("Usuário");
+        nome.setText(nome02);
+        nome.setToolTipText("");
+        nome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nomeMouseClicked(evt);
+            }
+        });
 
         email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         email.setForeground(new java.awt.Color(204, 204, 204));
         email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        email.setText("Usuário@biblioteca.com");
+        email.setText(email02);
+        email.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                emailMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,7 +115,32 @@ public class Header extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void imageAvatar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageAvatar1MouseClicked
 
+        JPerfil PerfilFrame = new JPerfil(dados, user, pUser);
+        PerfilFrame.setVisible(true);
+        pUser.dispose();
+    }//GEN-LAST:event_imageAvatar1MouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        JPerfil PerfilFrame = new JPerfil(dados, user, pUser);
+        PerfilFrame.setVisible(true);
+        pUser.dispose();
+    }//GEN-LAST:event_formMouseClicked
+
+    private void nomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeMouseClicked
+        JPerfil PerfilFrame = new JPerfil(dados, user, pUser);
+        PerfilFrame.setVisible(true);
+        pUser.dispose();
+    }//GEN-LAST:event_nomeMouseClicked
+
+    private void emailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailMouseClicked
+        JPerfil PerfilFrame = new JPerfil(dados, user, pUser);
+        PerfilFrame.setVisible(true);
+        pUser.dispose();
+    }//GEN-LAST:event_emailMouseClicked
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel email;
     private biblioteca.ImageAvatar imageAvatar1;

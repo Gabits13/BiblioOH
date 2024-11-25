@@ -34,6 +34,7 @@ public class TabelaFuncionario extends javax.swing.JPanel {
     String email = "";
     String codPeriodo = "";
     String codCargo = "";
+    String [] listaId;
     Conexao con_cliente;
     public TabelaFuncionario() {
         initComponents();
@@ -48,6 +49,8 @@ public class TabelaFuncionario extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from funcionario order by Id_Funcionario");
         preencherTabela();
+        listaId = new String[funcionario1.getRowCount()];
+        setListaId(ListarId(listaId));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -152,6 +155,21 @@ public class TabelaFuncionario extends javax.swing.JPanel {
         }
     };
     
+    public String[] ListarId (String id[]) {
+        for (int cont = 0; cont < funcionario1.getRowCount(); cont++) {
+            id[cont] = funcionario1.getValueAt(cont, 0).toString();
+        }
+        return id;
+    }
+
+    public String[] getListaId() {
+        return listaId;
+    }
+
+    public void setListaId(String[] listaId) {
+        this.listaId = listaId;
+    }
+    
     private void preencherTabela() {
         funcionario1.getColumnModel().getColumn(0);
         funcionario1.getColumnModel().getColumn(1);
@@ -207,10 +225,6 @@ public class TabelaFuncionario extends javax.swing.JPanel {
         btnNovoRegistro = new javax.swing.JButton();
         barraPesquisa = new javax.swing.JTextField();
         btnPesquisa = new javax.swing.JButton();
-        btnProximo = new javax.swing.JButton();
-        btnAnterior = new javax.swing.JButton();
-        btnPrimeiro = new javax.swing.JButton();
-        btnUltimo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -272,14 +286,6 @@ public class TabelaFuncionario extends javax.swing.JPanel {
             }
         });
 
-        btnProximo.setText("Próximo");
-
-        btnAnterior.setText("Anterior");
-
-        btnPrimeiro.setText("Primeiro");
-
-        btnUltimo.setText("Ultimo");
-
         jLabel2.setText("Tabela Funcionário");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -298,14 +304,7 @@ public class TabelaFuncionario extends javax.swing.JPanel {
                         .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                        .addComponent(btnProximo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAnterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPrimeiro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUltimo)))
+                        .addGap(0, 381, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -321,10 +320,6 @@ public class TabelaFuncionario extends javax.swing.JPanel {
                     .addComponent(btnNovoRegistro)
                     .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisa)
-                    .addComponent(btnProximo)
-                    .addComponent(btnAnterior)
-                    .addComponent(btnPrimeiro)
-                    .addComponent(btnUltimo)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,6 +369,9 @@ public class TabelaFuncionario extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (funcionario1.isEditing()) {
+                funcionario1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from funcionario where Nome like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);
@@ -392,12 +390,8 @@ public class TabelaFuncionario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField barraPesquisa;
-    private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnNovoRegistro;
     private javax.swing.JButton btnPesquisa;
-    private javax.swing.JButton btnPrimeiro;
-    private javax.swing.JButton btnProximo;
-    private javax.swing.JButton btnUltimo;
     private tabelas.Tabela funcionario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

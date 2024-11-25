@@ -5,10 +5,13 @@
 package tabelas;
 
 import JanelasModais.AlterarUsuario;
+import JanelasModais.Multa;
 import JanelasModais.NovoRegistroUsuario;
 import conexao.Conexao;
 import java.awt.Color;
+import java.awt.List;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -31,13 +34,14 @@ public class TabelaUsuario extends javax.swing.JPanel {
     String telefone = "";
     String email = "";
     String senha = "";
+    String [] listaId;
     Conexao con_cliente;
     public TabelaUsuario() {
         initComponents();
         
         con_cliente = new Conexao(); // inicialização do objeto
         con_cliente.conecta(); // chama o método que conecta
-        
+         
         usuario1.setShowHorizontalLines(true);
         usuario1.setGridColor(new Color(230, 230, 230));
         usuario1.setRowHeight(40);
@@ -45,6 +49,8 @@ public class TabelaUsuario extends javax.swing.JPanel {
         
         con_cliente.executaSQL("select * from usuario order by Id_Usuario");
         preencherTabela();
+        listaId = new String[usuario1.getRowCount()];
+        setListaId(ListarId(listaId));
     }
     
     FuncoesBtn event = new FuncoesBtn() {
@@ -138,6 +144,36 @@ public class TabelaUsuario extends javax.swing.JPanel {
         }
     };
     
+    
+    public String Multar(String id) {
+        for (int cont = 0; cont < usuario1.getRowCount(); cont++) {
+            String idComparativo = usuario1.getValueAt(cont, 0).toString();
+            if (idComparativo.equals(id)) {
+                String nomeMulta = usuario1.getValueAt(cont, 1).toString();
+                return nomeMulta;
+            }
+        }
+        return null;
+    }
+    
+    
+    public String[] ListarId (String id[]) {
+        for (int cont = 0; cont < usuario1.getRowCount(); cont++) {
+            id[cont] = usuario1.getValueAt(cont, 0).toString();
+        }
+        return id;
+    }
+
+    public String[] getListaId() {
+        return listaId;
+    }
+
+    public void setListaId(String[] listaId) {
+        this.listaId = listaId;
+    }
+    
+    
+  
     private void preencherTabela() {
         usuario1.getColumnModel().getColumn(0);
         usuario1.getColumnModel().getColumn(1);
@@ -187,10 +223,6 @@ public class TabelaUsuario extends javax.swing.JPanel {
         btnNovoRegistro = new javax.swing.JButton();
         barraPesquisa = new javax.swing.JTextField();
         btnPesquisa = new javax.swing.JButton();
-        btnProximo = new javax.swing.JButton();
-        btnAnterior = new javax.swing.JButton();
-        btnPrimeiro = new javax.swing.JButton();
-        btnUltimo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -220,12 +252,18 @@ public class TabelaUsuario extends javax.swing.JPanel {
         usuario1.setSelectionBackground(new java.awt.Color(0, 102, 102));
         jScrollPane1.setViewportView(usuario1);
         if (usuario1.getColumnModel().getColumnCount() > 0) {
-            usuario1.getColumnModel().getColumn(0).setPreferredWidth(50);
-            usuario1.getColumnModel().getColumn(1).setPreferredWidth(140);
+            usuario1.getColumnModel().getColumn(0).setHeaderValue("Id_Usuario");
             usuario1.getColumnModel().getColumn(2).setPreferredWidth(70);
+            usuario1.getColumnModel().getColumn(2).setHeaderValue("Endereco");
             usuario1.getColumnModel().getColumn(3).setPreferredWidth(100);
+            usuario1.getColumnModel().getColumn(3).setHeaderValue("RG");
+            usuario1.getColumnModel().getColumn(4).setHeaderValue("CPF");
             usuario1.getColumnModel().getColumn(5).setPreferredWidth(90);
+            usuario1.getColumnModel().getColumn(5).setHeaderValue("Telefone");
+            usuario1.getColumnModel().getColumn(6).setHeaderValue("Email");
+            usuario1.getColumnModel().getColumn(7).setHeaderValue("Senha");
             usuario1.getColumnModel().getColumn(8).setPreferredWidth(110);
+            usuario1.getColumnModel().getColumn(8).setHeaderValue("Ação");
         }
 
         btnNovoRegistro.setText("Novo Registro");
@@ -248,14 +286,6 @@ public class TabelaUsuario extends javax.swing.JPanel {
             }
         });
 
-        btnProximo.setText("Próximo");
-
-        btnAnterior.setText("Anterior");
-
-        btnPrimeiro.setText("Primeiro");
-
-        btnUltimo.setText("Ultimo");
-
         jLabel2.setText("Tabela Usuário");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -274,42 +304,26 @@ public class TabelaUsuario extends javax.swing.JPanel {
                         .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                        .addComponent(btnProximo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAnterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPrimeiro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUltimo)))
+                        .addGap(238, 384, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(767, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel2)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovoRegistro)
                     .addComponent(barraPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisa)
-                    .addComponent(btnProximo)
-                    .addComponent(btnAnterior)
-                    .addComponent(btnPrimeiro)
-                    .addComponent(btnUltimo)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(235, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(jLabel2)
-                    .addContainerGap(497, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -347,6 +361,9 @@ public class TabelaUsuario extends javax.swing.JPanel {
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
         // TODO add your handling code here:
+        if (usuario1.isEditing()) {
+                usuario1.getCellEditor().stopCellEditing();
+        }
         try {
                 String pesquisa = "select * from usuario where Nome like '" + barraPesquisa.getText() + "%'";
                 con_cliente.executaSQL(pesquisa);
@@ -365,12 +382,8 @@ public class TabelaUsuario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField barraPesquisa;
-    private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnNovoRegistro;
     private javax.swing.JButton btnPesquisa;
-    private javax.swing.JButton btnPrimeiro;
-    private javax.swing.JButton btnProximo;
-    private javax.swing.JButton btnUltimo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

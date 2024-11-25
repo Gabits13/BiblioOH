@@ -81,7 +81,7 @@ public class Acao extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(400, 40));
 
-        btnAlterar.setText("ALT");
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnAlterarMousePressed(evt);
@@ -91,7 +91,8 @@ public class Acao extends javax.swing.JPanel {
             }
         });
 
-        btnDeletar.setText("DEL");
+        btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deletar.png"))); // NOI18N
+        btnDeletar.setToolTipText("");
         btnDeletar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnDeletarMousePressed(evt);
@@ -119,7 +120,7 @@ public class Acao extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlterar)
                     .addComponent(btnDeletar))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
